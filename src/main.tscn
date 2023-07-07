@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckquq3ei6vpjd"]
+
+[ext_resource type="PackedScene" uid="uid://dar2at6wkagq0" path="res://src/level/level.tscn" id="1_kmuel"]
+
+[node name="Main" type="Node"]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Level" parent="World" instance=ExtResource("1_kmuel")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
