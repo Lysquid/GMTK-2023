@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://dar2at6wkagq0"]
+[gd_scene load_steps=3 format=3 uid="uid://dar2at6wkagq0"]
 
 [ext_resource type="PackedScene" uid="uid://d3lvcsjo3xb7y" path="res://src/entities/zombie.tscn" id="1_ibkw1"]
+[ext_resource type="PackedScene" uid="uid://ibv3ohtyrc7g" path="res://src/entities/human.tscn" id="2_lymg8"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Zombie" parent="." instance=ExtResource("1_ibkw1")]
+[node name="Zombie1" parent="." instance=ExtResource("1_ibkw1")]
 
 [node name="TileMap" type="TileMap" parent="."]
 format = 2
+
+[node name="Human1" parent="." instance=ExtResource("2_lymg8")]
