@@ -1,20 +1,34 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3lvcsjo3xb7y"]
+[gd_scene load_steps=8 format=3 uid="uid://d3lvcsjo3xb7y"]
 
 [ext_resource type="Script" path="res://src/entities/zombie.gd" id="1_tq7vc"]
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="2_p62so"]
+[ext_resource type="Texture2D" uid="uid://bmfb738mx0fyw" path="res://assets/characters/png/headless_death.png" id="2_v8s0f"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pkgcy"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0r17"]
+atlas = ExtResource("2_v8s0f")
+region = Rect2(30, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_80f3w"]
 animations = [{
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0r17")
+}],
 "loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -29,8 +43,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o7rj1"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4vnw"]
+radius = 3.0
+height = 10.0
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombies"]]
 collision_layer = 2
@@ -38,18 +53,21 @@ collision_mask = 7
 script = ExtResource("1_tq7vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pkgcy")
+shape = SubResource("CapsuleShape2D_5pjab")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_80f3w")
-animation = &"attack"
+animation = &"idle"
 
 [node name="SelectArea" type="Area2D" parent="."]
+position = Vector2(-6, -1)
 collision_layer = 2147483648
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectArea"]
-shape = SubResource("CircleShape2D_o7rj1")
+position = Vector2(6, 1)
+shape = SubResource("CapsuleShape2D_p4vnw")
 
 [node name="Arrow" type="Node2D" parent="."]
 visible = false
@@ -59,5 +77,11 @@ texture = ExtResource("2_p62so")
 region_enabled = true
 region_rect = Rect2(96, 80, 16, 16)
 
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="SelectArea" to="." method="_on_select_area_mouse_entered"]
 [connection signal="mouse_exited" from="SelectArea" to="." method="_on_select_area_mouse_exited"]
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]

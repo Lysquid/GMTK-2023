@@ -66,7 +66,7 @@ animations = [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_6jh1f")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 5.0
 }, {
@@ -83,7 +83,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3gjs8")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -117,5 +117,3 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b0ajn")
-animation = &"idle"
-frame_progress = 0.775444

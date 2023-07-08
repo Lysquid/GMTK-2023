@@ -11,10 +11,11 @@ var selected: bool = false
 var direction: Vector2 = Vector2(1, 0)
 
 var alive: bool = true
-
+var selectable: bool = true
+var is_idle: bool = false
 
 func _ready():
-	$AnimatedSprite2D.play("running", 1.0, false)
+	$AnimatedSprite2D.play("running")
 
 
 func get_dir():
@@ -23,7 +24,8 @@ func get_dir():
 
 
 func kill():
-	$AnimatedSprite2D.play("death", 1.0, false)
+	
+	$AnimatedSprite2D.play("death")
 	self.alive = false
 	self.selected = false
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -33,7 +35,9 @@ func _process(delta):
 	
 	$Arrow.visible = selected
 	
-	if !alive: return
+	if !alive : 
+		$AnimatedSprite2D.play("dead")
+		return
 	
 	var click: bool = Input.is_action_just_pressed("select")
 	var dir: Vector2 = get_dir()
@@ -41,12 +45,13 @@ func _process(delta):
 	# updating selected variable
 	if selected:
 		if click:
-			$AnimatedSprite2D.play("running", 1.0, false)
+			$AnimatedSprite2D.play("running")
 			selected = false
 			direction = dir
-	else:
+			is_idle = false
+	elif selectable:
 		if click and mouse_on_zombie:
-			$AnimatedSprite2D.play("idle", 1.0, false)
+			$AnimatedSprite2D.play("idle")
 			selected = true
 	
 	# showing selection
@@ -58,7 +63,7 @@ func _process(delta):
 
 func _physics_process(delta):
 	
-	if !alive: return
+	if !alive or is_idle: return
 	
 	if !selected:
 		var collision: KinematicCollision2D = move_and_collide(direction * SPEED * delta)
@@ -69,11 +74,43 @@ func _physics_process(delta):
 				self.kill()
 				body.kill()
 			elif body is Human and body.alive:
+				$AnimatedSprite2D.play("attack")
 				body.die()
-
+			else:
+				set_idle()
+				selectable = false
 
 func _on_select_area_mouse_entered():
 	mouse_on_zombie = true
 
 func _on_select_area_mouse_exited():
 	mouse_on_zombie = false
+
+func _on_idle_timer_timeout():
+	
+	if !alive:
+		return
+	
+	$AnimatedSprite2D.play("running")
+	selectable = true
+
+func set_idle():
+	
+	if is_idle:
+		return
+	
+	is_idle = true
+	$IdleTimer.start()
+	$AnimatedSprite2D.play("idle")
+
+func _on_animated_sprite_2d_animation_finished():
+	
+	if !alive:
+		$AnimatedSprite2D.play("dead")
+		return
+		
+		
+	if $AnimatedSprite2D.animation == "attack":
+
+		$AnimatedSprite2D.play("idle")
+		$IdleTimer.start()
