@@ -3,7 +3,7 @@ class_name Zombie
 
 const Human = preload("res://src/entities/human.gd")
 
-const SPEED: float = 20
+@export var SPEED: float
 const ARROW_DIST: float = 20
 
 var mouse_on_zombie: bool = false
@@ -14,6 +14,7 @@ var alive: bool = true
 var is_idle: bool = false
 
 var rng = RandomNumberGenerator.new()
+
 
 func _ready():
 	run()
@@ -28,18 +29,18 @@ func kill():
 	$AnimatedSprite2D.play("death")
 	self.alive = false
 	unselect()
+	$Arrow.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
 
 
 func unselect():
+	print("unselect")
 	get_parent().unselect()
 	selected = false
 	is_idle = false
 
 
 func _process(delta):
-	
-	$Arrow.visible = selected
 	
 	if !alive :
 		return
@@ -64,6 +65,8 @@ func _process(delta):
 		$Arrow.position = dir * ARROW_DIST
 		var angle: float = $Arrow.get_angle_to(position + dir * 2 * ARROW_DIST)
 		$Arrow.rotate(angle)
+	
+	$Arrow.visible = selected
 
 
 func _physics_process(delta):
