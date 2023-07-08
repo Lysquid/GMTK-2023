@@ -14,7 +14,7 @@ var alive: bool = true
 
 
 func _ready():
-	pass # Replace with function body.
+	$AnimatedSprite2D.play("running", 1.0, false)
 
 
 func get_dir():
@@ -23,6 +23,7 @@ func get_dir():
 
 
 func kill():
+	$AnimatedSprite2D.play("death", 1.0, false)
 	self.alive = false
 	self.selected = false
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -40,10 +41,12 @@ func _process(delta):
 	# updating selected variable
 	if selected:
 		if click:
+			$AnimatedSprite2D.play("running", 1.0, false)
 			selected = false
 			direction = dir
 	else:
 		if click and mouse_on_zombie:
+			$AnimatedSprite2D.play("idle", 1.0, false)
 			selected = true
 	
 	# showing selection
