@@ -3,7 +3,7 @@ extends CharacterBody2D
 const Zombie = preload("res://src/entities/zombie.gd")
 const Human = preload("res://src/entities/human.gd")
 
-const SPEED: float = 20
+@export var SPEED: float
 const ARROW_DIST: float = 20
 
 var mouse_on_zombie: bool = false

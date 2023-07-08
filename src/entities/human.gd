@@ -3,15 +3,20 @@ extends CharacterBody2D
 @export var bullet_scene: PackedScene
 
 @export var vision_range: int
-@export var angular_speed: float = 1	#rad/s
-@export var direction : = Vector2(1, 0)
-@export var ARROW_DIST : = 10
+@export var angular_speed: float
+@export var direction : Vector2
+@export var ARROW_DIST : float
 
 
 const Zombie = preload("res://src/entities/zombie.gd")
 const Human = preload("res://src/entities/human.gd")
 
 var alive : = true
+
+
+func _ready():
+	direction = direction.normalized()
+
 
 func die():
 	$AnimatedSprite2D.play("death")
