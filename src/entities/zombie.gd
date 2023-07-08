@@ -46,10 +46,10 @@ func _process(delta):
 	# updating selected variable
 	if selected:
 		if click:
-			$AnimatedSprite2D.play("running")
-			selected = false
 			direction = dir
+			selected = false
 			is_idle = false
+			run()
 	else:
 		if click and mouse_on_zombie:
 			$AnimatedSprite2D.play("idle")
@@ -108,6 +108,11 @@ func _on_idle_timer_timeout():
 	if !alive: return
 	
 	is_idle = false
+	run()
+
+
+func run():
+	$AnimatedSprite2D.flip_h = (direction.dot(Vector2(1, 0)) > 0)
 	$AnimatedSprite2D.play("running")
 
 
