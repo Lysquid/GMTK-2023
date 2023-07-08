@@ -6,10 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human_idle.png" id="4_jdl67"]
 [ext_resource type="Texture2D" uid="uid://dwlr2b7lefhoa" path="res://assets/guns.png" id="5_5xxdy"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odd0r"]
-radius = 3.0
-height = 10.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvugm"]
 atlas = ExtResource("2_3o38f")
 region = Rect2(0, 0, 10, 10)
@@ -68,6 +64,10 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odd0r"]
+radius = 2.0
+height = 6.0
+
 [node name="Human" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 7
@@ -77,13 +77,14 @@ VISION_RANGE = 80
 ANGULAR_SPEED = 2.0
 ARROW_DIST = 10.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_odd0r")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["humans"]]
 sprite_frames = SubResource("SpriteFrames_ycaak")
 animation = &"look_down"
 autoplay = "look_down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_odd0r")
 
 [node name="ShootingCooldown" type="Timer" parent="."]
 wait_time = 2.0

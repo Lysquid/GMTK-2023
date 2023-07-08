@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/icons_shadows.png" id="2_x3y4f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
-radius = 1.0
+radius = 2.0
 height = 4.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_80f3w"]
@@ -42,10 +42,10 @@ SPEED = 40.0
 ARROW_DIST = 20.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_5pjab")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_80f3w")
 animation = &"run"
 

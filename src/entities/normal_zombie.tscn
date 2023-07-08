@@ -110,7 +110,4 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b0ajn")
-animation = &"die"
 autoplay = "run"
-frame = 2
-frame_progress = 1.0
