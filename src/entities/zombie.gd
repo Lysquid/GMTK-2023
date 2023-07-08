@@ -19,6 +19,12 @@ func get_dir():
 	return (mouse_pos - position).normalized()
 
 
+func kill():
+	self.alive = false
+	self.selected = false
+	$CollisionShape2D.set_deferred("disabled", true)
+
+
 func _process(delta):
 	
 	$Arrow.visible = selected
@@ -55,9 +61,7 @@ func _on_area_2d_mouse_exited():
 
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body == self or !self.alive or !body.is_in_group("zombies"): return
+	if body == self or !body.is_in_group("zombies") or !self.alive: return
 	
-	self.alive = false
-	self.selected = false
-	body.alive = false
-	body.selected = false
+	self.kill()
+	body.kill()
