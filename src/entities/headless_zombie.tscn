@@ -1,8 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://bicgawf0etonw"]
+[gd_scene load_steps=15 format=3 uid="uid://bicgawf0etonw"]
 
 [ext_resource type="PackedScene" uid="uid://d3lvcsjo3xb7y" path="res://src/entities/zombie.tscn" id="1_p58vi"]
 [ext_resource type="Texture2D" uid="uid://gt2rwk36bbfw" path="res://assets/characters/png/headless_idle.png" id="2_4klsp"]
+[ext_resource type="Texture2D" uid="uid://bmfb738mx0fyw" path="res://assets/characters/png/headless_death.png" id="2_sqoh4"]
 [ext_resource type="Texture2D" uid="uid://bd84maplcarl1" path="res://assets/characters/png/headless_running.png" id="3_5163d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibu8x"]
+atlas = ExtResource("2_sqoh4")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s8ndd"]
+atlas = ExtResource("2_sqoh4")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3s7y"]
+atlas = ExtResource("2_sqoh4")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3flgl"]
+atlas = ExtResource("2_sqoh4")
+region = Rect2(30, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhuuj"]
 atlas = ExtResource("2_4klsp")
@@ -26,6 +43,23 @@ region = Rect2(20, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_li8ne"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibu8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s8ndd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3s7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3flgl")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 4.0,
 "texture": SubResource("AtlasTexture_nhuuj")
@@ -56,5 +90,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_li8ne")
-animation = &"idle"
-frame_progress = 0.428139
+animation = &"death"
+frame_progress = 0.812162
