@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="2_p62so"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkgcy"]
-radius = 7.0
+radius = 15.1327
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bf3o1"]
 atlas = ExtResource("2_p62so")
@@ -22,24 +22,25 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o7rj1"]
-radius = 8.0
+radius = 16.0
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombies"]]
-collision_layer = 2
-collision_mask = 3
+collision_layer = 3
+collision_mask = 0
 script = ExtResource("1_tq7vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_pkgcy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_f4j3r")
 
-[node name="SelectArea" type="Area2D" parent="."]
-collision_layer = 2147483648
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 524288
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_o7rj1")
 
 [node name="Arrow" type="Node2D" parent="."]
@@ -50,5 +51,6 @@ texture = ExtResource("2_p62so")
 region_enabled = true
 region_rect = Rect2(96, 80, 16, 16)
 
-[connection signal="mouse_entered" from="SelectArea" to="." method="_on_select_area_mouse_entered"]
-[connection signal="mouse_exited" from="SelectArea" to="." method="_on_select_area_mouse_exited"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
