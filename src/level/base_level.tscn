@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dar2at6wkagq0"]
+
+[ext_resource type="TileSet" uid="uid://kgbean2vy55g" path="res://res/tilemap.tres" id="2_njgsb"]
+
+[node name="Level" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("2_njgsb")
+format = 2
+layer_0/name = "Backgroud"
+layer_1/name = "Builds"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = false
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Zombies" type="Node2D" parent="."]
+
+[node name="Humans" type="Node2D" parent="."]
