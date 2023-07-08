@@ -45,7 +45,7 @@ sprite_frames = SubResource("SpriteFrames_80f3w")
 animation = &"attack"
 
 [node name="SelectArea" type="Area2D" parent="."]
-collision_layer = 524288
+collision_layer = 2147483648
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectArea"]
