@@ -1,7 +1,84 @@
-[gd_scene format=3 uid="uid://ibv3ohtyrc7g"]
+[gd_scene load_steps=12 format=3 uid="uid://ibv3ohtyrc7g"]
+
+[ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human.png" id="1_62f0r"]
+[ext_resource type="Script" path="res://src/entities/human.gd" id="1_c8ce2"]
+[ext_resource type="Texture2D" uid="uid://dvbep6wmsy153" path="res://assets/characters/png/human_death.png" id="2_3o38f"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odd0r"]
+radius = 3.0
+height = 10.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvugm"]
+atlas = ExtResource("2_3o38f")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rumid"]
+atlas = ExtResource("2_3o38f")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3svn"]
+atlas = ExtResource("2_3o38f")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7pa6"]
+atlas = ExtResource("1_62f0r")
+region = Rect2(50, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nmud"]
+atlas = ExtResource("1_62f0r")
+region = Rect2(60, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kcat"]
+atlas = ExtResource("1_62f0r")
+region = Rect2(70, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ycaak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvugm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rumid")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3svn")
+}],
+"loop": false,
+"name": &"death",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7pa6")
+}, {
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_1nmud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7pa6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_4kcat")
+}],
+"loop": true,
+"name": &"down",
+"speed": 3.0
+}]
 
 [node name="Human" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_c8ce2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_odd0r")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["humans"]]
+sprite_frames = SubResource("SpriteFrames_ycaak")
+animation = &"death"
+autoplay = "down"
+frame = 2
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

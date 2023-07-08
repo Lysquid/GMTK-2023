@@ -25,8 +25,8 @@ animations = [{
 radius = 8.0
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombies"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("1_tq7vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

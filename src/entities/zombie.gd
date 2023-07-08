@@ -1,5 +1,8 @@
 extends CharacterBody2D
 
+const Zombie = preload("res://src/entities/zombie.gd")
+const Human = preload("res://src/entities/human.gd")
+
 const SPEED: float = 40
 const ARROW_DIST: float = 20
 
@@ -58,10 +61,12 @@ func _physics_process(delta):
 		var collision: KinematicCollision2D = move_and_collide(direction * SPEED * delta)
 		
 		if collision != null:
-			var body = collision.get_collider()
-			if body.is_in_group("zombies") and body.alive:
+			var body: Object = collision.get_collider()
+			if body is Zombie and body.alive:
 				self.kill()
 				body.kill()
+			elif body is Human and body.alive:
+				body.die()
 
 
 func _on_select_area_mouse_entered():

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce3ustgbmx0pp"
-path="res://.godot/imported/human_rotation_animation.png-3ee8763fd0fb5c8b55eb234cb69e5904.ctex"
+path="res://.godot/imported/human.png-a2fa71a9744a74b0950bd995cee6c818.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/png/human_rotation_animation.png"
-dest_files=["res://.godot/imported/human_rotation_animation.png-3ee8763fd0fb5c8b55eb234cb69e5904.ctex"]
+source_file="res://assets/characters/png/human.png"
+dest_files=["res://.godot/imported/human.png-a2fa71a9744a74b0950bd995cee6c818.ctex"]
 
 [params]
 
