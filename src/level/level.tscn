@@ -24,9 +24,9 @@ layer_1/tile_data = PackedInt32Array(655363, 0, 5, 655364, 0, 5, 655365, 0, 5, 6
 [node name="Zombies" type="Node2D" parent="."]
 
 [node name="Zombie1" parent="Zombies" instance=ExtResource("1_ibkw1")]
-position = Vector2(365, 256)
+position = Vector2(140, 85)
 
 [node name="Zombie2" parent="Zombies" instance=ExtResource("1_ibkw1")]
-position = Vector2(405, 385)
+position = Vector2(198, 123)
 
 [node name="Zombie3" parent="Zombies" instance=ExtResource("1_ibkw1")]
