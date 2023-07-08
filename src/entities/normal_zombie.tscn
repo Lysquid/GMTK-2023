@@ -117,3 +117,5 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b0ajn")
+animation = &"running"
+frame = 2

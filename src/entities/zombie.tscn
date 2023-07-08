@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
 radius = 3.0
-height = 10.0
+height = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0r17"]
 atlas = ExtResource("2_v8s0f")
@@ -43,9 +43,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p4vnw"]
-radius = 3.0
-height = 10.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwt4e"]
+radius = 5.0
+height = 12.0
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombies"]]
 collision_layer = 2
@@ -53,21 +53,22 @@ collision_mask = 7
 script = ExtResource("1_tq7vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
 shape = SubResource("CapsuleShape2D_5pjab")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_80f3w")
-animation = &"idle"
+animation = &"death"
 
 [node name="SelectArea" type="Area2D" parent="."]
-position = Vector2(-6, -1)
+position = Vector2(0, -0.5)
 collision_layer = 2147483648
 collision_mask = 0
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectArea"]
-position = Vector2(6, 1)
-shape = SubResource("CapsuleShape2D_p4vnw")
+shape = SubResource("CapsuleShape2D_vwt4e")
 
 [node name="Arrow" type="Node2D" parent="."]
 visible = false
