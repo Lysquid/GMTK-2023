@@ -101,8 +101,7 @@ func set_idle():
 	
 	is_idle = true
 	$IdleTimer.start()
-	if $AnimatedSprite2D.animation != "attack":
-		$AnimatedSprite2D.play("idle")
+	$AnimatedSprite2D.play("idle")
 
 func _on_animated_sprite_2d_animation_finished():
 	
