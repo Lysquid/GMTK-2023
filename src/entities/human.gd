@@ -32,23 +32,26 @@ func get_closest_zombie() -> Zombie:
 		var result: Dictionary = space_state.intersect_ray(query)
 		if result.is_empty(): continue
 		var collider: Object = result.collider
-		print(collider.name)
 		
 		if collider is Zombie:
 			return collider
 	return null
 
-func shoot():
-	print('shoot')
-#	var bullet := bullet_scene.instantiate()
-#	get_parent().add_child(bullet)
+func shoot(zombie: Zombie):
+	var bullet := bullet_scene.instantiate()
+	get_parent().add_child(bullet)
+	bullet.global_position = global_position
+	var direction = position.direction_to(zombie.position).normalized()
+	bullet.linear_velocity = direction * bullet.speed
+	$ShootingCooldown.start()
 
 func _physics_process(delta):
 
 	
 	if not alive: return
 	
-	var closest_zombie: Zombie = get_closest_zombie()
-	if not closest_zombie == null:
-		shoot()
-		pass
+	if $ShootingCooldown.is_stopped():
+		var closest_zombie: Zombie = get_closest_zombie()
+		if not closest_zombie == null:
+			shoot(closest_zombie)
+			pass

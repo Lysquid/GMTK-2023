@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ibv3ohtyrc7g"]
+[gd_scene load_steps=13 format=3 uid="uid://ibv3ohtyrc7g"]
 
 [ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human.png" id="1_62f0r"]
 [ext_resource type="Script" path="res://src/entities/human.gd" id="1_c8ce2"]
 [ext_resource type="Texture2D" uid="uid://dvbep6wmsy153" path="res://assets/characters/png/human_death.png" id="2_3o38f"]
+[ext_resource type="PackedScene" uid="uid://bcvquvvnoafis" path="res://src/entities/bullet.tscn" id="2_p3ucs"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odd0r"]
 radius = 3.0
@@ -70,6 +71,7 @@ animations = [{
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_c8ce2")
+bullet_scene = ExtResource("2_p3ucs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_odd0r")
@@ -80,5 +82,8 @@ animation = &"death"
 autoplay = "down"
 frame = 2
 frame_progress = 1.0
+
+[node name="ShootingCooldown" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
