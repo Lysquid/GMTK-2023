@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3lvcsjo3xb7y"]
+[gd_scene load_steps=6 format=3 uid="uid://d3lvcsjo3xb7y"]
 
 [ext_resource type="Script" path="res://src/entities/zombie.gd" id="1_tq7vc"]
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="2_p62so"]
@@ -6,18 +6,26 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_pkgcy"]
 radius = 7.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bf3o1"]
-atlas = ExtResource("2_p62so")
-region = Rect2(128, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_f4j3r"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_80f3w"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bf3o1")
-}],
+"frames": [],
 "loop": true,
-"name": &"default",
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"running",
 "speed": 5.0
 }]
 
@@ -33,7 +41,8 @@ script = ExtResource("1_tq7vc")
 shape = SubResource("CircleShape2D_pkgcy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_f4j3r")
+sprite_frames = SubResource("SpriteFrames_80f3w")
+animation = &"attack"
 
 [node name="SelectArea" type="Area2D" parent="."]
 collision_layer = 524288

@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://bicgawf0etonw"]
+
+[ext_resource type="PackedScene" uid="uid://d3lvcsjo3xb7y" path="res://src/entities/zombie.tscn" id="1_p58vi"]
+[ext_resource type="Texture2D" uid="uid://gt2rwk36bbfw" path="res://assets/characters/png/headless_idle.png" id="2_4klsp"]
+[ext_resource type="Texture2D" uid="uid://bd84maplcarl1" path="res://assets/characters/png/headless_running.png" id="3_5163d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhuuj"]
+atlas = ExtResource("2_4klsp")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exopo"]
+atlas = ExtResource("2_4klsp")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orm10"]
+atlas = ExtResource("3_5163d")
+region = Rect2(0, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xha43"]
+atlas = ExtResource("3_5163d")
+region = Rect2(10, 0, 10, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr0xd"]
+atlas = ExtResource("3_5163d")
+region = Rect2(20, 0, 10, 10)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_li8ne"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_nhuuj")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_exopo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orm10")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xha43")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr0xd")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[node name="headless_zombie" instance=ExtResource("1_p58vi")]
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_li8ne")
+animation = &"idle"
+frame_progress = 0.428139
