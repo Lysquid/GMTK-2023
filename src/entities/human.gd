@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
 
+@export var vision_range: int
+
 const Zombie = preload("res://src/entities/zombie.gd")
 const Human = preload("res://src/entities/human.gd")
 
@@ -21,7 +23,7 @@ func _on_animated_sprite_2d_animation_finished():
 func sort_closest(a: Node2D, b: Node2D):
 	return position.distance_squared_to(a.position) < position.distance_squared_to(b.position)
 
-func get_closest_zombie() -> Zombie:
+func get_closest_zombie_in_range() -> Zombie:
 	var zombies = get_tree().get_nodes_in_group("zombies")
 	zombies.sort_custom(sort_closest)
 	for zombie in zombies:
@@ -33,7 +35,7 @@ func get_closest_zombie() -> Zombie:
 		if result.is_empty(): continue
 		var collider: Object = result.collider
 		
-		if collider is Zombie:
+		if collider is Zombie and position.distance_to(collider.position) < vision_range:
 			return collider
 	return null
 
@@ -42,7 +44,7 @@ func shoot(zombie: Zombie):
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position
 	var direction = position.direction_to(zombie.position).normalized()
-	bullet.linear_velocity = direction * bullet.speed
+	bullet.velocity = direction * bullet.speed
 	$ShootingCooldown.start()
 
 func _physics_process(delta):
@@ -50,7 +52,7 @@ func _physics_process(delta):
 	if not alive: return
 	
 	if $ShootingCooldown.is_stopped():
-		var closest_zombie: Zombie = get_closest_zombie()
+		var closest_zombie: Zombie = get_closest_zombie_in_range()
 		if not closest_zombie == null:
 			shoot(closest_zombie)
 			pass

@@ -7,20 +7,20 @@
 size = Vector2(2, 2)
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppxup"]
-lifetime_randomness = 0.5
+lifetime_randomness = 1.0
 particle_flag_disable_z = true
 gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+angle_min = -720.0
 turbulence_enabled = true
+turbulence_noise_strength = 10.0
 
-[node name="Bullet" type="RigidBody2D"]
+[node name="Bullet" type="Area2D"]
 collision_layer = 0
-collision_mask = 0
-gravity_scale = 0.0
-linear_damp_mode = 1
+collision_mask = 3
 script = ExtResource("1_47khn")
-speed = 30
+speed = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uxosd")
