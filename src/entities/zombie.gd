@@ -31,8 +31,8 @@ func _process(delta):
 	
 	if !alive: return
 	
-	var click = Input.is_action_just_pressed("select")
-	var dir = get_dir()
+	var click: bool = Input.is_action_just_pressed("select")
+	var dir: Vector2 = get_dir()
 	
 	# updating selected variable
 	if selected:
@@ -43,25 +43,29 @@ func _process(delta):
 		if click and mouse_on_zombie:
 			selected = true
 	
-	# applying selection
+	# showing selection
 	if selected:
 		$Arrow.position = dir * ARROW_DIST
-		var angle = $Arrow.get_angle_to(position + dir * 2 * ARROW_DIST)
+		var angle: float = $Arrow.get_angle_to(position + dir * 2 * ARROW_DIST)
 		$Arrow.rotate(angle)
-	else:
-		move_and_collide(direction * SPEED * delta)
 
 
-func _on_area_2d_mouse_entered():
+func _physics_process(delta):
+	
+	if !alive: return
+	
+	if !selected:
+		var collision: KinematicCollision2D = move_and_collide(direction * SPEED * delta)
+		
+		if collision != null:
+			var body = collision.get_collider()
+			if body.is_in_group("zombies") and body.alive:
+				self.kill()
+				body.kill()
+
+
+func _on_select_area_mouse_entered():
 	mouse_on_zombie = true
 
-
-func _on_area_2d_mouse_exited():
+func _on_select_area_mouse_exited():
 	mouse_on_zombie = false
-
-
-func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
-	if body == self or !body.is_in_group("zombies") or !self.alive: return
-	
-	self.kill()
-	body.kill()
