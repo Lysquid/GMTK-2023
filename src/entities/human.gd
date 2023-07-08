@@ -42,7 +42,7 @@ func shoot(zombie: Zombie):
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position
 	var direction = position.direction_to(zombie.position).normalized()
-	bullet.linear_velocity = direction * bullet.speed
+	bullet.velocity = direction * bullet.speed
 	$ShootingCooldown.start()
 
 func _physics_process(delta):
