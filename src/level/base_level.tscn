@@ -20,10 +20,10 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
+[node name="Humans" type="Node2D" parent="."]
+
 [node name="Zombies" type="Node2D" parent="."]
 script = ExtResource("2_bgqek")
-
-[node name="Humans" type="Node2D" parent="."]
 
 [node name="WorldBorders" type="StaticBody2D" parent="."]
 

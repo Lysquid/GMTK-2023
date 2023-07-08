@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Zombie
 
-@export var SPEED: float
+const SPEED: float = 15
 @export var ARROW_DIST: float
 
 var mouse_on_zombie: bool = false
@@ -72,22 +72,15 @@ func _physics_process(delta):
 		
 		if collision != null:
 			var body: Object = collision.get_collider()
-			var dir: Vector2 = collision.get_normal()
+			var collision_dir: Vector2 = collision.get_normal()
 			
-			if body is Zombie:
-				if body.alive:
-					self.die()
-					body.die()
-					$AnimatedSprite2D.play("die")
+			direction = collision_dir.rotated(randf_range(-PI/2, PI/2))
 			
-			elif body is Human:
-				if body.alive:
+			if body is Zombie or body is Human:
 					$AnimatedSprite2D.play("attack")
 					body.die()
-			
+					is_idle = true
 			else:
-				# leaves in random direction
-				direction = dir.rotated(randf_range(-PI/2, PI/2))
 				set_idle()
 
 
@@ -118,8 +111,6 @@ func run():
 
 
 func _on_animated_sprite_2d_animation_finished():
-	pass
 	if $AnimatedSprite2D.animation == "attack":
-		
-		$AnimatedSprite2D.play("idle")
-		$IdleTimer.start()
+		is_idle = false
+		set_idle()

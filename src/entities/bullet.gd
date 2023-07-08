@@ -1,7 +1,5 @@
 extends Area2D
 
-const Zombie = preload("res://src/entities/zombie.gd")
-
 @export var speed: int
 var velocity: Vector2
 

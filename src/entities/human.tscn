@@ -73,7 +73,7 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_c8ce2")
 bullet_scene = ExtResource("2_p3ucs")
-VISION_RANGE = 80
+VISION_RANGE = 60
 ANGULAR_SPEED = 2.0
 ARROW_DIST = 10.0
 
