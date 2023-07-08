@@ -1,8 +1,56 @@
-[gd_scene format=3 uid="uid://d3lvcsjo3xb7y"]
+[gd_scene load_steps=7 format=3 uid="uid://d3lvcsjo3xb7y"]
 
-[node name="Zombie" type="CharacterBody2D"]
+[ext_resource type="Script" path="res://src/entities/zombie.gd" id="1_tq7vc"]
+[ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="2_p62so"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pkgcy"]
+radius = 15.1327
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bf3o1"]
+atlas = ExtResource("2_p62so")
+region = Rect2(128, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f4j3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bf3o1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7rj1"]
+radius = 16.0
+
+[node name="Zombie" type="CharacterBody2D" groups=["zombies"]]
+collision_layer = 3
+collision_mask = 0
+script = ExtResource("1_tq7vc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pkgcy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9, 4)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_f4j3r")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 524288
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_o7rj1")
+
+[node name="Arrow" type="Node2D" parent="."]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
+texture = ExtResource("2_p62so")
+region_enabled = true
+region_rect = Rect2(96, 80, 16, 16)
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
