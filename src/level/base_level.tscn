@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://chdgy7qyir142"]
+[gd_scene load_steps=3 format=3 uid="uid://chdgy7qyir142"]
 
 [ext_resource type="TileSet" uid="uid://kgbean2vy55g" path="res://res/tilemap.tres" id="2_njgsb"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_rc6j8"]
+normal = Vector2(0, 1)
 
 [node name="Level" type="Node2D"]
 
@@ -19,3 +22,24 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Zombies" type="Node2D" parent="."]
 
 [node name="Humans" type="Node2D" parent="."]
+
+[node name="WorldBorders" type="StaticBody2D" parent="."]
+
+[node name="WorldBorderUp" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(320, 0)
+shape = SubResource("WorldBoundaryShape2D_rc6j8")
+
+[node name="WorldBorderDown" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(0, 180)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_rc6j8")
+
+[node name="WorldBorderRight" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(320, 0)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_rc6j8")
+
+[node name="WorldBorderLeft" type="CollisionShape2D" parent="WorldBorders"]
+position = Vector2(0, 180)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_rc6j8")
