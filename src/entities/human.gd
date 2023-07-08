@@ -46,7 +46,6 @@ func shoot(zombie: Zombie):
 	$ShootingCooldown.start()
 
 func _physics_process(delta):
-
 	
 	if not alive: return
 	

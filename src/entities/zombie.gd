@@ -11,8 +11,9 @@ var selected: bool = false
 var direction: Vector2 = Vector2(1, 0)
 
 var alive: bool = true
-var selectable: bool = true
 var is_idle: bool = false
+
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	$AnimatedSprite2D.play("running")
@@ -49,7 +50,7 @@ func _process(delta):
 			selected = false
 			direction = dir
 			is_idle = false
-	elif selectable:
+	else:
 		if click and mouse_on_zombie:
 			$AnimatedSprite2D.play("idle")
 			selected = true
@@ -70,15 +71,24 @@ func _physics_process(delta):
 		
 		if collision != null:
 			var body: Object = collision.get_collider()
-			if body is Zombie and body.alive:
-				self.kill()
-				body.kill()
-			elif body is Human and body.alive:
-				$AnimatedSprite2D.play("attack")
-				body.die()
+			var dir: Vector2 = collision.get_normal()
+			
+			if body is Zombie:
+				if body.alive:
+					self.kill()
+					body.kill()
+					$AnimatedSprite2D.play("dead")
+			
+			elif body is Human:
+				if body.alive:
+					$AnimatedSprite2D.play("attack")
+					body.die()
+			
 			else:
+				# leaves in random direction
+				direction = dir.rotated(rng.randf_range(-PI/2, PI/2))
 				set_idle()
-				selectable = false
+
 
 func _on_select_area_mouse_entered():
 	mouse_on_zombie = true
@@ -86,31 +96,24 @@ func _on_select_area_mouse_entered():
 func _on_select_area_mouse_exited():
 	mouse_on_zombie = false
 
-func _on_idle_timer_timeout():
-	
-	if !alive:
-		return
-	
-	$AnimatedSprite2D.play("running")
-	selectable = true
 
 func set_idle():
-	
-	if is_idle:
-		return
+	if is_idle: return
 	
 	is_idle = true
 	$IdleTimer.start()
 	$AnimatedSprite2D.play("idle")
 
-func _on_animated_sprite_2d_animation_finished():
+func _on_idle_timer_timeout():
+	if !alive: return
 	
-	if !alive:
-		$AnimatedSprite2D.play("dead")
-		return
-		
-		
-	if $AnimatedSprite2D.animation == "attack":
+	is_idle = false
+	$AnimatedSprite2D.play("running")
 
+
+func _on_animated_sprite_2d_animation_finished():
+	pass
+	if $AnimatedSprite2D.animation == "attack":
+		
 		$AnimatedSprite2D.play("idle")
 		$IdleTimer.start()
