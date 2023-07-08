@@ -1,30 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3lvcsjo3xb7y"]
+[gd_scene load_steps=6 format=3 uid="uid://d3lvcsjo3xb7y"]
 
 [ext_resource type="Script" path="res://src/entities/zombie.gd" id="1_tq7vc"]
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="2_p62so"]
-[ext_resource type="Texture2D" uid="uid://bmfb738mx0fyw" path="res://assets/characters/png/headless_death.png" id="2_v8s0f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
 radius = 3.0
 height = 9.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e0r17"]
-atlas = ExtResource("2_v8s0f")
-region = Rect2(30, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_80f3w"]
 animations = [{
 "frames": [],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e0r17")
-}],
-"loop": true,
-"name": &"dead",
 "speed": 5.0
 }, {
 "frames": [],
@@ -44,8 +31,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vwt4e"]
-radius = 5.0
-height = 12.0
+radius = 6.0
+height = 14.0
 
 [node name="Zombie" type="CharacterBody2D" groups=["zombies"]]
 collision_layer = 2
@@ -59,7 +46,7 @@ shape = SubResource("CapsuleShape2D_5pjab")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_80f3w")
-animation = &"death"
+animation = &"attack"
 
 [node name="SelectArea" type="Area2D" parent="."]
 position = Vector2(0, -0.5)

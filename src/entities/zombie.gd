@@ -3,7 +3,7 @@ extends CharacterBody2D
 const Zombie = preload("res://src/entities/zombie.gd")
 const Human = preload("res://src/entities/human.gd")
 
-const SPEED: float = 40
+const SPEED: float = 20
 const ARROW_DIST: float = 20
 
 var mouse_on_zombie: bool = false
@@ -16,7 +16,7 @@ var is_idle: bool = false
 var rng = RandomNumberGenerator.new()
 
 func _ready():
-	$AnimatedSprite2D.play("running")
+	run()
 
 
 func get_dir():
@@ -25,19 +25,23 @@ func get_dir():
 
 
 func kill():
-	
 	$AnimatedSprite2D.play("death")
 	self.alive = false
-	self.selected = false
+	unselect()
 	$CollisionShape2D.set_deferred("disabled", true)
+
+
+func unselect():
+	get_parent().unselect()
+	selected = false
+	is_idle = false
 
 
 func _process(delta):
 	
 	$Arrow.visible = selected
 	
-	if !alive : 
-		$AnimatedSprite2D.play("dead")
+	if !alive :
 		return
 	
 	var click: bool = Input.is_action_just_pressed("select")
@@ -47,13 +51,13 @@ func _process(delta):
 	if selected:
 		if click:
 			direction = dir
-			selected = false
-			is_idle = false
+			unselect()
 			run()
 	else:
-		if click and mouse_on_zombie:
+		if click and mouse_on_zombie and get_parent().can_select():
 			$AnimatedSprite2D.play("idle")
 			selected = true
+			get_parent().select()
 	
 	# showing selection
 	if selected:
