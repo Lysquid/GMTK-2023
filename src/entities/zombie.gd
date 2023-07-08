@@ -13,6 +13,8 @@ var direction: Vector2 = Vector2(1, 0)
 var alive: bool = true
 var is_idle: bool = false
 
+var rng = RandomNumberGenerator.new()
+
 func _ready():
 	$AnimatedSprite2D.play("running")
 
@@ -69,19 +71,22 @@ func _physics_process(delta):
 		
 		if collision != null:
 			var body: Object = collision.get_collider()
+			var dir: Vector2 = collision.get_normal()
 			
 			if body is Zombie:
 				if body.alive:
 					self.kill()
 					body.kill()
 					$AnimatedSprite2D.play("dead")
-				
+			
 			elif body is Human:
 				if body.alive:
 					$AnimatedSprite2D.play("attack")
 					body.die()
-				
+			
 			else:
+				# leaves in random direction
+				direction = dir.rotated(rng.randf_range(-PI/2, PI/2))
 				set_idle()
 
 
