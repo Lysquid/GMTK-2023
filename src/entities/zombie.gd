@@ -34,8 +34,9 @@ func _process(delta):
 	else:
 		if Input.is_action_just_pressed("select") and mouse_on_zombie:
 			selected = true
-		
-	move_and_collide(direction * SPEED * delta)
+	
+	if !selected:
+		move_and_collide(direction * SPEED * delta)
 
 
 func _on_area_2d_mouse_entered():

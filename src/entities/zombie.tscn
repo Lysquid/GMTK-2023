@@ -31,6 +31,7 @@ script = ExtResource("1_tq7vc")
 shape = SubResource("CircleShape2D_pkgcy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_f4j3r")
 
 [node name="Area2D" type="Area2D" parent="."]
