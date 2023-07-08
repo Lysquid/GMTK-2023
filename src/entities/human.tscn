@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvbep6wmsy153" path="res://assets/characters/png/human_death.png" id="2_3o38f"]
 [ext_resource type="PackedScene" uid="uid://bcvquvvnoafis" path="res://src/entities/bullet.tscn" id="2_p3ucs"]
 [ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human_idle.png" id="4_jdl67"]
-[ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/icons_shadows.png" id="5_ew4es"]
+[ext_resource type="Texture2D" uid="uid://dwlr2b7lefhoa" path="res://assets/guns.png" id="5_5xxdy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odd0r"]
 radius = 3.0
@@ -73,8 +73,8 @@ collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_c8ce2")
 bullet_scene = ExtResource("2_p3ucs")
-vision_range = 70
-angular_speed = 1.0
+VISION_RANGE = 80
+ANGULAR_SPEED = 2.0
 ARROW_DIST = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -86,15 +86,15 @@ animation = &"look_down"
 autoplay = "look_down"
 
 [node name="ShootingCooldown" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="Arrow" type="Node2D" parent="."]
-visible = false
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(-0.5, 1.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="Arrow"]
-texture = ExtResource("5_ew4es")
-region_enabled = true
-region_rect = Rect2(0, 96, 16, 16)
+[node name="Sprite" type="Sprite2D" parent="Gun"]
+position = Vector2(3, 0)
+texture = ExtResource("5_5xxdy")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

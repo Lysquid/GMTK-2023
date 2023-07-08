@@ -3,8 +3,8 @@ class_name Human
 
 @export var bullet_scene: PackedScene
 
-@export var vision_range: int
-@export var angular_speed: float
+@export var VISION_RANGE: int
+@export var ANGULAR_SPEED: float
 @export var ARROW_DIST: float
 
 
@@ -46,7 +46,7 @@ func can_shoot(enemy: Zombie, dir = null):
 	if result.is_empty(): return false	# should not happen
 	var collider: Object = result.collider
 	
-	if collider == enemy and position.distance_to(result.position) < vision_range:
+	if collider == enemy and position.distance_to(result.position) < VISION_RANGE:
 		return true
 	return false
 
@@ -79,8 +79,10 @@ func aim(target: Zombie, delta):
 	if angle_dif > 180:
 		angle_dif = 360 - angle_dif
 	
-	var angle_mov = clamp(angle_dif, -angular_speed * delta, angular_speed * delta)
+	var angle_mov = clamp(angle_dif, -ANGULAR_SPEED * delta, ANGULAR_SPEED * delta)
 	direction = direction.rotated(angle_mov)
+	$Gun.rotation = direction.angle()
+	$Gun/Sprite.flip_v = direction.dot(Vector2.LEFT) > 0
 
 func _physics_process(delta):
 	
@@ -93,8 +95,3 @@ func _physics_process(delta):
 		
 		else:
 			aim(target, delta)
-			$Arrow.position = direction * ARROW_DIST
-			var angle: float = $Arrow.get_angle_to(position + direction * 2 * ARROW_DIST)
-			$Arrow.rotate(angle)
-		
-	$Arrow.visible = target != null

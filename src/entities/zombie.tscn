@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/icons_shadows.png" id="2_x3y4f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
-radius = 2.5
-height = 8.0
+radius = 1.0
+height = 4.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_80f3w"]
 animations = [{
