@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="2_p62so"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
-radius = 3.0
-height = 9.0
+radius = 2.5
+height = 8.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_80f3w"]
 animations = [{
@@ -38,9 +38,9 @@ height = 14.0
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_tq7vc")
+SPEED = 40.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("CapsuleShape2D_5pjab")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -52,10 +52,11 @@ animation = &"running"
 position = Vector2(0, -0.5)
 collision_layer = 2147483648
 collision_mask = 0
-metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SelectArea"]
 shape = SubResource("CapsuleShape2D_vwt4e")
+metadata/_edit_lock_ = true
 
 [node name="Arrow" type="Node2D" parent="."]
 visible = false
