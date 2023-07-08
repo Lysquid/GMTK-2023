@@ -44,7 +44,6 @@ func shoot():
 #	get_parent().add_child(bullet)
 
 func _physics_process(delta):
-
 	
 	if not alive: return
 	
