@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgs0s1oyotwfu"]
+[gd_scene load_steps=5 format=3 uid="uid://dgs0s1oyotwfu"]
 
 [ext_resource type="PackedScene" uid="uid://chdgy7qyir142" path="res://src/level/base_level.tscn" id="1_ed51i"]
 [ext_resource type="PackedScene" uid="uid://cxomcvon07u4p" path="res://src/entities/normal_zombie.tscn" id="2_6nox7"]
+[ext_resource type="PackedScene" uid="uid://6o8exetag04p" path="res://src/entities/explosive_zombie.tscn" id="3_2cev0"]
 [ext_resource type="PackedScene" uid="uid://ibv3ohtyrc7g" path="res://src/entities/human.tscn" id="3_immhs"]
 
 [node name="Level" instance=ExtResource("1_ed51i")]
@@ -15,6 +16,9 @@ position = Vector2(82, 101)
 
 [node name="normal_zombie3" parent="Zombies" index="1" instance=ExtResource("2_6nox7")]
 position = Vector2(82, 111)
+
+[node name="ExplosiveZombie" parent="Zombies" index="2" instance=ExtResource("3_2cev0")]
+position = Vector2(120.4, 93.4093)
 
 [node name="Human" parent="Humans" index="0" instance=ExtResource("3_immhs")]
 position = Vector2(208, 72)

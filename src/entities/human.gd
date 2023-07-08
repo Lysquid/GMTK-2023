@@ -1,11 +1,9 @@
 extends CharacterBody2D
+class_name Human
 
 @export var bullet_scene: PackedScene
 
 @export var vision_range: int
-
-const Zombie = preload("res://src/entities/zombie.gd")
-const Human = preload("res://src/entities/human.gd")
 
 var alive: bool = true
 

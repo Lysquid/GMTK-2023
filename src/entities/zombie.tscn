@@ -46,7 +46,7 @@ shape = SubResource("CapsuleShape2D_5pjab")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_80f3w")
-animation = &"attack"
+animation = &"running"
 
 [node name="SelectArea" type="Area2D" parent="."]
 position = Vector2(0, -0.5)

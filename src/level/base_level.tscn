@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://chdgy7qyir142"]
+[gd_scene load_steps=4 format=3 uid="uid://chdgy7qyir142"]
 
 [ext_resource type="Script" path="res://src/level/Zombies.gd" id="2_bgqek"]
 [ext_resource type="TileSet" uid="uid://kgbean2vy55g" path="res://res/tilemap.tres" id="2_njgsb"]

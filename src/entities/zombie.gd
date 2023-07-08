@@ -1,6 +1,6 @@
 extends CharacterBody2D
+class_name Zombie
 
-const Zombie = preload("res://src/entities/zombie.gd")
 const Human = preload("res://src/entities/human.gd")
 
 const SPEED: float = 20

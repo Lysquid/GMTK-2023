@@ -9,7 +9,10 @@ size = Vector2(2, 2)
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppxup"]
 lifetime_randomness = 1.0
 particle_flag_disable_z = true
+spread = 180.0
 gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 angle_min = -720.0
