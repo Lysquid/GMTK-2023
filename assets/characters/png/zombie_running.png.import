@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://x87crmhcvhrw"
-path="res://.godot/imported/running.png-ed8b4ac9d95bb6616aff75c80e403f98.ctex"
+path="res://.godot/imported/zombie_running.png-b78d1059cac784c78ffb7357070a660d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/png/running.png"
-dest_files=["res://.godot/imported/running.png-ed8b4ac9d95bb6616aff75c80e403f98.ctex"]
+source_file="res://assets/characters/png/zombie_running.png"
+dest_files=["res://.godot/imported/zombie_running.png-b78d1059cac784c78ffb7357070a660d.ctex"]
 
 [params]
 

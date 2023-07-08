@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5nvcxevp0et0"
-path="res://.godot/imported/IconsFlat-16.png-0871eb27f7efda7c83fbbfe6ef9442a7.ctex"
+uid="uid://co6u2vxf0v7kb"
+path="res://.godot/imported/zombie_attack.png-dd210c46775ed22578b0b4e1e2fc560d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/icons/IconsFlat-16.png"
-dest_files=["res://.godot/imported/IconsFlat-16.png-0871eb27f7efda7c83fbbfe6ef9442a7.ctex"]
+source_file="res://assets/characters/png/zombie_attack.png"
+dest_files=["res://.godot/imported/zombie_attack.png-dd210c46775ed22578b0b4e1e2fc560d.ctex"]
 
 [params]
 

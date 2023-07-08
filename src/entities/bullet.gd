@@ -11,5 +11,5 @@ func _physics_process(delta):
 
 func _on_body_entered(body):
 	if body is Zombie:
-		body.kill()
+		body.die()
 	call_deferred("queue_free")

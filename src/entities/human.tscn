@@ -1,10 +1,10 @@
 [gd_scene load_steps=14 format=3 uid="uid://ibv3ohtyrc7g"]
 
-[ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human.png" id="1_62f0r"]
 [ext_resource type="Script" path="res://src/entities/human.gd" id="1_c8ce2"]
 [ext_resource type="Texture2D" uid="uid://dvbep6wmsy153" path="res://assets/characters/png/human_death.png" id="2_3o38f"]
 [ext_resource type="PackedScene" uid="uid://bcvquvvnoafis" path="res://src/entities/bullet.tscn" id="2_p3ucs"]
-[ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/IconsShadow-16.png" id="5_2ly8i"]
+[ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human_idle.png" id="4_jdl67"]
+[ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/icons_shadows.png" id="5_ew4es"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_odd0r"]
 radius = 3.0
@@ -23,15 +23,15 @@ atlas = ExtResource("2_3o38f")
 region = Rect2(20, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7pa6"]
-atlas = ExtResource("1_62f0r")
+atlas = ExtResource("4_jdl67")
 region = Rect2(50, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1nmud"]
-atlas = ExtResource("1_62f0r")
+atlas = ExtResource("4_jdl67")
 region = Rect2(60, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kcat"]
-atlas = ExtResource("1_62f0r")
+atlas = ExtResource("4_jdl67")
 region = Rect2(70, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycaak"]
@@ -47,7 +47,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_u3svn")
 }],
 "loop": false,
-"name": &"death",
+"name": &"die",
 "speed": 2.0
 }, {
 "frames": [{
@@ -64,7 +64,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_4kcat")
 }],
 "loop": true,
-"name": &"down",
+"name": &"look_down",
 "speed": 3.0
 }]
 
@@ -75,7 +75,6 @@ script = ExtResource("1_c8ce2")
 bullet_scene = ExtResource("2_p3ucs")
 vision_range = 70
 angular_speed = 1.0
-direction = Vector2(1, 0)
 ARROW_DIST = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -83,8 +82,8 @@ shape = SubResource("CapsuleShape2D_odd0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["humans"]]
 sprite_frames = SubResource("SpriteFrames_ycaak")
-animation = &"death"
-autoplay = "down"
+animation = &"look_down"
+autoplay = "look_down"
 
 [node name="ShootingCooldown" type="Timer" parent="."]
 one_shot = true
@@ -94,7 +93,7 @@ autostart = true
 visible = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Arrow"]
-texture = ExtResource("5_2ly8i")
+texture = ExtResource("5_ew4es")
 region_enabled = true
 region_rect = Rect2(0, 96, 16, 16)
 

@@ -1,32 +1,29 @@
 extends CharacterBody2D
 class_name Zombie
 
-const Human = preload("res://src/entities/human.gd")
-
 @export var SPEED: float
-const ARROW_DIST: float = 20
+@export var ARROW_DIST: float
 
 var mouse_on_zombie: bool = false
 var selected: bool = false
-var direction: Vector2 = Vector2(1, 0)
+var direction: Vector2
 
 var alive: bool = true
 var is_idle: bool = false
 
-var rng = RandomNumberGenerator.new()
-
 
 func _ready():
+	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
 	run()
 
 
-func get_dir():
+func get_dir_to_mouse():
 	var mouse_pos = get_viewport().get_mouse_position()
 	return (mouse_pos - position).normalized()
 
 
-func kill():
-	$AnimatedSprite2D.play("death")
+func die():
+	$AnimatedSprite2D.play("die")
 	self.alive = false
 	unselect()
 	$Arrow.visible = false
@@ -34,7 +31,6 @@ func kill():
 
 
 func unselect():
-	print("unselect")
 	get_parent().unselect()
 	selected = false
 	is_idle = false
@@ -46,12 +42,12 @@ func _process(delta):
 		return
 	
 	var click: bool = Input.is_action_just_pressed("select")
-	var dir: Vector2 = get_dir()
+	var dir_to_mouse: Vector2 = get_dir_to_mouse()
 	
 	# updating selected variable
 	if selected:
 		if click:
-			direction = dir
+			direction = dir_to_mouse
 			unselect()
 			run()
 	else:
@@ -62,9 +58,7 @@ func _process(delta):
 	
 	# showing selection
 	if selected:
-		$Arrow.position = dir * ARROW_DIST
-		var angle: float = $Arrow.get_angle_to(position + dir * 2 * ARROW_DIST)
-		$Arrow.rotate(angle)
+		$Arrow.rotation = dir_to_mouse.angle()
 	
 	$Arrow.visible = selected
 
@@ -82,9 +76,9 @@ func _physics_process(delta):
 			
 			if body is Zombie:
 				if body.alive:
-					self.kill()
-					body.kill()
-					$AnimatedSprite2D.play("dead")
+					self.die()
+					body.die()
+					$AnimatedSprite2D.play("die")
 			
 			elif body is Human:
 				if body.alive:
@@ -93,7 +87,7 @@ func _physics_process(delta):
 			
 			else:
 				# leaves in random direction
-				direction = dir.rotated(rng.randf_range(-PI/2, PI/2))
+				direction = dir.rotated(randf_range(-PI/2, PI/2))
 				set_idle()
 
 
@@ -119,8 +113,8 @@ func _on_idle_timer_timeout():
 
 
 func run():
-	$AnimatedSprite2D.flip_h = (direction.dot(Vector2(1, 0)) > 0)
-	$AnimatedSprite2D.play("running")
+	$AnimatedSprite2D.flip_h = (direction.dot(Vector2.RIGHT) > 0)
+	$AnimatedSprite2D.play("run")
 
 
 func _on_animated_sprite_2d_animation_finished():

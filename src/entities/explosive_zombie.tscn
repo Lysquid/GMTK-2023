@@ -53,5 +53,6 @@ script = ExtResource("2_jc1ii")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_bycit")
-animation = &"death"
+animation = &"running"
 autoplay = "running"
+frame_progress = 0.0451137

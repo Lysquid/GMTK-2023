@@ -5,24 +5,24 @@ class_name Human
 
 @export var vision_range: int
 @export var angular_speed: float
-@export var direction : Vector2
-@export var ARROW_DIST : float
+@export var ARROW_DIST: float
 
 
+var direction: Vector2
 var alive: bool = true
 
 
 func _ready():
-	direction = direction.normalized()
+	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
 
 
 func die():
-	$AnimatedSprite2D.play("death")
+	$AnimatedSprite2D.play("die")
 	alive = false
 
 
 func _on_animated_sprite_2d_animation_finished():
-	if $AnimatedSprite2D.animation == "death":
+	if $AnimatedSprite2D.animation == "die":
 		$CollisionShape2D.set_deferred("disabled", true)
 
 
@@ -85,17 +85,11 @@ func aim(target: Zombie, delta):
 func _physics_process(delta):
 	
 	if not alive: return
-	
-#	if $ShootingCooldown.is_stopped():
-#		var closest_zombie: Zombie = get_closest_zombie_in_range()
-#		if not closest_zombie == null:
-#			shoot(closest_zombie)
-#			pass
-	
+
 	var target = get_closest_zombie_in_range()
 	if target != null:
 		if can_shoot(target, direction) and $ShootingCooldown.is_stopped():
-				shoot(target)
+			shoot(target)
 		
 		else:
 			aim(target, delta)
