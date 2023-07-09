@@ -13,13 +13,15 @@ var direction: Vector2
 var alive: bool = true
 var is_idle: bool = false
 
-var idle_sounds = [$Idle1, $Idle2]
+var idle_sounds: Array 
 
 
 func _ready():
 	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
 	_on_idle_finished()
 	run()
+	
+	idle_sounds = [$Idle1, $Idle2]
 
 
 func play_idle():
