@@ -70,6 +70,18 @@ region_rect = Rect2(96, 80, 16, 16)
 wait_time = 3.0
 one_shot = true
 
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
+
+[node name="Idle" type="AudioStreamPlayer" parent="."]
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+
+[node name="Rush" type="AudioStreamPlayer" parent="."]
+
+[node name="Wall" type="AudioStreamPlayer" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="SelectArea" to="." method="_on_select_area_mouse_entered"]
 [connection signal="mouse_exited" from="SelectArea" to="." method="_on_select_area_mouse_exited"]

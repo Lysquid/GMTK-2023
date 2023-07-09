@@ -21,6 +21,7 @@ func _ready():
 
 func die():
 	$AnimatedSprite2D.play("die")
+	$Die.play()
 	self.alive = false
 	unselect()
 	$Arrow.visible = false
@@ -61,6 +62,7 @@ func _process(delta):
 	# updating selected variable
 	if selected:
 		if left_click:
+			$Rush.play()
 			direction = dir_to_mouse
 			unselect()
 			run()
@@ -68,6 +70,7 @@ func _process(delta):
 		if left_click and mouse_on_zombie and get_parent().can_select():
 			# select zombie
 			$AnimatedSprite2D.play("idle")
+			$Click.play()
 			selected = true
 			get_parent().select()
 			Engine.time_scale = SLOW_TIME_SCALE
@@ -83,6 +86,7 @@ func _process(delta):
 	
 	if right_click and vec_to_mouse.length() < HEAR_RANGE and can_see(mouse_position):
 		direction = dir_to_mouse
+		$Rush.play()
 		run()
 
 
@@ -101,9 +105,11 @@ func _physics_process(delta):
 			
 			if body is Zombie or body is Human:
 				$AnimatedSprite2D.play("attack")
+				$Attack.play()
 				body.die()
 				is_idle = true
 			else:
+				$Wall.play()
 				set_idle()
 
 
