@@ -17,3 +17,5 @@ music_resources = Array[AudioStreamMP3]([ExtResource("4_23ibb"), ExtResource("5_
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true
+
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

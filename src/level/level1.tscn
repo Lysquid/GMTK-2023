@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgs0s1oyotwfu"]
+[gd_scene load_steps=4 format=3 uid="uid://dgs0s1oyotwfu"]
 
 [ext_resource type="PackedScene" uid="uid://chdgy7qyir142" path="res://src/level/base_level.tscn" id="1_ed51i"]
 [ext_resource type="PackedScene" uid="uid://cxomcvon07u4p" path="res://src/entities/normal_zombie.tscn" id="2_6nox7"]
-[ext_resource type="PackedScene" uid="uid://6o8exetag04p" path="res://src/entities/explosive_zombie.tscn" id="3_2cev0"]
 [ext_resource type="PackedScene" uid="uid://ibv3ohtyrc7g" path="res://src/entities/human.tscn" id="3_immhs"]
 
 [node name="Level" instance=ExtResource("1_ed51i")]
@@ -14,23 +13,5 @@ layer_1/tile_data = PackedInt32Array(655363, 0, 5, 655364, 0, 5, 655365, 0, 5, 6
 [node name="Human" parent="Humans" index="0" instance=ExtResource("3_immhs")]
 position = Vector2(208, 72)
 
-[node name="ExplosiveZombie" parent="Zombies" index="0" instance=ExtResource("3_2cev0")]
-position = Vector2(148.694, 110.136)
-
-[node name="normal_zombie2" parent="Zombies" index="1" instance=ExtResource("2_6nox7")]
-position = Vector2(208.612, 50.4095)
-
-[node name="normal_zombie3" parent="Zombies" index="2" instance=ExtResource("2_6nox7")]
-position = Vector2(94.3744, 152.189)
-
-[node name="normal_zombie" parent="Zombies" index="3" instance=ExtResource("2_6nox7")]
-position = Vector2(98.6841, 94.4587)
-
-[node name="normal_zombie4" parent="Zombies" index="4" instance=ExtResource("2_6nox7")]
-position = Vector2(115.036, 61.4214)
-
-[node name="normal_zombie5" parent="Zombies" index="5" instance=ExtResource("2_6nox7")]
-position = Vector2(138.729, 77.1058)
-
-[node name="normal_zombie6" parent="Zombies" index="6" instance=ExtResource("2_6nox7")]
-position = Vector2(149.742, 55.4146)
+[node name="normal_zombie6" parent="Zombies" index="0" instance=ExtResource("2_6nox7")]
+position = Vector2(151.844, 73.4939)
