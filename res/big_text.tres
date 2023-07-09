@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c58osb742on20"]
+
+[ext_resource type="FontFile" uid="uid://bf5508ag4sgx3" path="res://assets/fonts/ghastlypixe/GhastlyPixe.ttf" id="1_j5pg5"]
+
+[resource]
+default_font = ExtResource("1_j5pg5")
+default_font_size = 40

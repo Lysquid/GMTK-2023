@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://crlor7admtbns"]
+
+[ext_resource type="PackedScene" uid="uid://c8i62kv1n7aao" path="res://src/hud/hud.tscn" id="1_4wox2"]
+
+[node name="HUD" instance=ExtResource("1_4wox2")]
+
+[node name="Title" parent="." index="1"]
+text = "Level complete!"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Zombies rescued: "
+
+[node name="Button" parent="." index="3"]
+text = "NEXT LEVEL"

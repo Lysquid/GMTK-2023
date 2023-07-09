@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://chso812y0e5il"]
+
+[ext_resource type="FontFile" uid="uid://c5me0fbfmkjri" path="res://assets/fonts/pixelmix/pixelmix.ttf" id="1_sy605"]
+
+[resource]
+default_font = ExtResource("1_sy605")
+default_font_size = 8

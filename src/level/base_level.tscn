@@ -8,6 +8,7 @@
 normal = Vector2(0, 1)
 
 [node name="Level" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_bs5c0")
 
 [node name="TileMap" type="TileMap" parent="."]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4wjbrqxnu2d"]
+
+[ext_resource type="PackedScene" uid="uid://c8i62kv1n7aao" path="res://src/hud/hud.tscn" id="1_5qqqb"]
+
+[node name="HUD" instance=ExtResource("1_5qqqb")]
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.529412, 0, 0, 0.607843)
+
+[node name="Title" parent="." index="1"]
+text = "Game over"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Zombies really are dumb"
+
+[node name="Button" parent="." index="3"]
+text = "RESTART"
