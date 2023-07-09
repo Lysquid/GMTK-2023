@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckquq3ei6vpjd"]
+[gd_scene load_steps=14 format=3 uid="uid://ckquq3ei6vpjd"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_1eu3o"]
 [ext_resource type="PackedScene" uid="uid://ppkxvax6r7ji" path="res://src/level/level_tuto.tscn" id="2_c3cgl"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bbxn3vlyu8kcs" path="res://src/level/level5.tscn" id="7_rybd2"]
 [ext_resource type="PackedScene" uid="uid://crlor7admtbns" path="res://src/hud/level_complete.tscn" id="8_1xysx"]
 [ext_resource type="PackedScene" uid="uid://b4bpuhagg6e1d" path="res://src/hud/game_end.tscn" id="9_opsku"]
+[ext_resource type="PackedScene" uid="uid://qo5iolb3j7rf" path="res://src/hud/game_start.tscn" id="13_4grk6"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1eu3o")
@@ -27,4 +28,9 @@ z_index = -1
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
+[node name="StartScreen" parent="." instance=ExtResource("13_4grk6")]
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="focus_entered" from="StartScreen" to="." method="_on_start_screen_focus_entered"]
+[connection signal="mouse_entered" from="StartScreen" to="." method="_on_start_screen_mouse_entered"]
+[connection signal="start_game" from="StartScreen" to="." method="_on_start_screen_start_game"]

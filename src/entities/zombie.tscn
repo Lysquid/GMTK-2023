@@ -80,11 +80,14 @@ one_shot = true
 [node name="Attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_jqu0e")
 
+[node name="Gulp" type="AudioStreamPlayer" parent="."]
+
 [node name="Die" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rcgk6")
 
-[node name="Idle" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_oc68s")
+[node name="Idle1" type="AudioStreamPlayer" parent="."]
+
+[node name="Idle2" type="AudioStreamPlayer" parent="."]
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_62u1m")
@@ -99,7 +102,12 @@ stream = ExtResource("8_42y14")
 stream = ExtResource("9_qaha0")
 volume_db = -15.0
 
+[node name="SoundTimer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="SelectArea" to="." method="_on_select_area_mouse_entered"]
 [connection signal="mouse_exited" from="SelectArea" to="." method="_on_select_area_mouse_exited"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="finished" from="Idle1" to="." method="_on_idle_finished"]
+[connection signal="finished" from="Idle2" to="." method="_on_idle_finished"]
+[connection signal="timeout" from="SoundTimer" to="." method="_on_sound_timer_timeout"]
