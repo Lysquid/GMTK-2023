@@ -8,6 +8,8 @@ func end_game():
 	level_nb = 0
 
 func load_level():
+	for child in $World.get_children():
+		child.queue_free()
 	if level_nb == level_scenes.size():
 		end_game()
 	var level: Level = level_scenes[level_nb].instantiate()
@@ -22,10 +24,8 @@ func _ready():
 
 
 func _on_level_complete(surviving_zombies):
-	for child in $World.get_children():
-		child.queue_free()
-	load_level()
 	level_nb += 1
+	load_level()
 
 func _on_level_game_over():
 	load_level()
