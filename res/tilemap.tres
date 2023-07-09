@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://kgbean2vy55g"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://kgbean2vy55g"]
 
 [ext_resource type="Texture2D" uid="uid://bm2k8hytwev30" path="res://assets/jawbreaker_tiles.png" id="1_d26t1"]
 
@@ -13,6 +13,9 @@ tile_data = PackedInt32Array(0, 327680, 65543, 65536, 393216, 65543, 131072, 458
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_chpcb"]
 tile_data = PackedInt32Array(0, 131072, 4, 65536, 131072, 5, 65537, 196608, 5)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_pdgv2"]
+tile_data = PackedInt32Array(0, 196608, 7, 65536, 196608, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1rc5w"]
 texture = ExtResource("1_d26t1")
@@ -576,3 +579,4 @@ pattern_0 = SubResource("TileMapPattern_okqif")
 pattern_1 = SubResource("TileMapPattern_rys4p")
 pattern_2 = SubResource("TileMapPattern_untps")
 pattern_3 = SubResource("TileMapPattern_chpcb")
+pattern_4 = SubResource("TileMapPattern_pdgv2")
