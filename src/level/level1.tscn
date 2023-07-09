@@ -17,25 +17,28 @@ position = Vector2(212, 45)
 position = Vector2(261, 155)
 
 [node name="normal_zombie6" parent="Zombies" index="0" instance=ExtResource("2_6nox7")]
-position = Vector2(172, 40)
+position = Vector2(150.896, 47.5595)
 
-[node name="normal_zombie10" parent="Zombies" index="1" instance=ExtResource("2_6nox7")]
-position = Vector2(192, 29)
+[node name="normal_zombie14" parent="Zombies" index="1" instance=ExtResource("2_6nox7")]
+position = Vector2(150.896, 47.5595)
 
-[node name="normal_zombie11" parent="Zombies" index="2" instance=ExtResource("2_6nox7")]
-position = Vector2(141, 29)
+[node name="normal_zombie10" parent="Zombies" index="2" instance=ExtResource("2_6nox7")]
+position = Vector2(214.417, 22.3929)
 
-[node name="normal_zombie12" parent="Zombies" index="3" instance=ExtResource("2_6nox7")]
-position = Vector2(162, 18)
+[node name="normal_zombie11" parent="Zombies" index="3" instance=ExtResource("2_6nox7")]
+position = Vector2(128.086, 31.2049)
 
-[node name="normal_zombie13" parent="Zombies" index="4" instance=ExtResource("2_6nox7")]
+[node name="normal_zombie12" parent="Zombies" index="4" instance=ExtResource("2_6nox7")]
+position = Vector2(142.786, 6.34573)
+
+[node name="normal_zombie13" parent="Zombies" index="5" instance=ExtResource("2_6nox7")]
 position = Vector2(183, 8)
 
-[node name="normal_zombie7" parent="Zombies" index="5" instance=ExtResource("2_6nox7")]
+[node name="normal_zombie7" parent="Zombies" index="6" instance=ExtResource("2_6nox7")]
 position = Vector2(316, 124)
 
-[node name="normal_zombie9" parent="Zombies" index="6" instance=ExtResource("2_6nox7")]
+[node name="normal_zombie9" parent="Zombies" index="7" instance=ExtResource("2_6nox7")]
 position = Vector2(315, 175)
 
-[node name="normal_zombie8" parent="Zombies" index="7" instance=ExtResource("2_6nox7")]
+[node name="normal_zombie8" parent="Zombies" index="8" instance=ExtResource("2_6nox7")]
 position = Vector2(288, 107)
