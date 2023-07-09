@@ -37,6 +37,14 @@ func unselect():
 	var main = get_node("/root/Main")
 	main.$AudioStreamPlayer2D.pitch_scale = 1
 
+func can_see(target: Vector2):
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(position, target, 1)
+	var result: Dictionary = space_state.intersect_ray(query)
+	if not result.is_empty():
+		var collision_position: Vector2 = result.position
+		return position.distance_to(collision_position) > position.distance_to(target)
+	return true
 
 func _process(delta):
 	
@@ -45,7 +53,8 @@ func _process(delta):
 	
 	var left_click: bool = Input.is_action_just_pressed("left_click")
 	var right_click: bool = Input.is_action_just_pressed("right_click")
-	var vec_to_mouse := get_viewport().get_mouse_position() - position
+	var mouse_position := get_viewport().get_mouse_position()
+	var vec_to_mouse := mouse_position - position
 	var dir_to_mouse := vec_to_mouse.normalized()
 	
 	# updating selected variable
@@ -70,7 +79,7 @@ func _process(delta):
 	
 	$Arrow.visible = selected
 	
-	if right_click and vec_to_mouse.length() < HEAR_RANGE:
+	if right_click and vec_to_mouse.length() < HEAR_RANGE and can_see(mouse_position):
 		direction = dir_to_mouse
 		run()
 
@@ -120,6 +129,7 @@ func _on_idle_timer_timeout():
 func run():
 	$AnimatedSprite2D.flip_h = direction.dot(Vector2.RIGHT) > 0
 	$AnimatedSprite2D.play("run")
+	is_idle = false
 
 
 func _on_animated_sprite_2d_animation_finished():
