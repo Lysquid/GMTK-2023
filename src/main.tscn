@@ -24,7 +24,7 @@ game_end_hud = ExtResource("9_opsku")
 [node name="World" type="Node2D" parent="."]
 z_index = -1
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

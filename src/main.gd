@@ -25,6 +25,9 @@ func _ready():
 	play_music()
 	load_level()
 
+func _process(delta):
+	if Input.is_action_pressed("restart"):
+		load_level()
 
 func end_screen():
 	var hud := game_end_hud.instantiate()
