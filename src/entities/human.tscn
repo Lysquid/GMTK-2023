@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ibv3ohtyrc7g"]
+[gd_scene load_steps=15 format=3 uid="uid://ibv3ohtyrc7g"]
 
 [ext_resource type="Script" path="res://src/entities/human.gd" id="1_c8ce2"]
 [ext_resource type="Texture2D" uid="uid://dvbep6wmsy153" path="res://assets/characters/png/human_death.png" id="2_3o38f"]
 [ext_resource type="PackedScene" uid="uid://bcvquvvnoafis" path="res://src/entities/bullet.tscn" id="2_p3ucs"]
 [ext_resource type="Texture2D" uid="uid://ce3ustgbmx0pp" path="res://assets/characters/png/human_idle.png" id="4_jdl67"]
 [ext_resource type="Texture2D" uid="uid://dwlr2b7lefhoa" path="res://assets/guns.png" id="5_5xxdy"]
+[ext_resource type="AudioStream" uid="uid://cggehpm2pygp1" path="res://assets/sound/mixkit-game-gun-shot-1662.mp3" id="6_jjrav"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvugm"]
 atlas = ExtResource("2_3o38f")
@@ -97,5 +98,11 @@ position = Vector2(-0.5, 1.5)
 [node name="Sprite" type="Sprite2D" parent="Gun"]
 position = Vector2(3, 0)
 texture = ExtResource("5_5xxdy")
+
+[node name="Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_jjrav")
+volume_db = -10.0
+
+[node name="Die" type="AudioStreamPlayer" parent="."]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
