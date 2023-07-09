@@ -18,7 +18,7 @@ position = Vector2(208, 72)
 position = Vector2(148.694, 110.136)
 
 [node name="normal_zombie2" parent="Zombies" index="1" instance=ExtResource("2_6nox7")]
-position = Vector2(209.279, 61.7556)
+position = Vector2(208.612, 50.4095)
 
 [node name="normal_zombie3" parent="Zombies" index="2" instance=ExtResource("2_6nox7")]
 position = Vector2(94.3744, 152.189)
