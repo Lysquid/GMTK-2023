@@ -1,23 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcvquvvnoafis"]
+[gd_scene load_steps=4 format=3 uid="uid://bcvquvvnoafis"]
 
 [ext_resource type="Script" path="res://src/entities/bullet.gd" id="1_47khn"]
 [ext_resource type="Texture2D" uid="uid://bamqt54ldbfy4" path="res://assets/icons/bullet.png" id="1_w3m8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxosd"]
 size = Vector2(2, 2)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ppxup"]
-lifetime_randomness = 1.0
-particle_flag_disable_z = true
-spread = 180.0
-gravity = Vector3(0, 0, 0)
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-angle_min = -720.0
-turbulence_enabled = true
-turbulence_noise_strength = 10.0
 
 [node name="Bullet" type="Area2D"]
 collision_layer = 0
@@ -28,9 +15,15 @@ speed = 50
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_uxosd")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_ppxup")
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+lifetime = 0.5
+fixed_fps = 30
 texture = ExtResource("1_w3m8p")
-speed_scale = 3.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+angle_min = -90.0
+angle_max = 90.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
