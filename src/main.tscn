@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckquq3ei6vpjd"]
+[gd_scene load_steps=7 format=3 uid="uid://ckquq3ei6vpjd"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_1eu3o"]
 [ext_resource type="PackedScene" uid="uid://br5mxh6t1lm8v" path="res://src/level/level2.tscn" id="1_22otc"]
 [ext_resource type="PackedScene" uid="uid://ppkxvax6r7ji" path="res://src/level/level_tuto.tscn" id="2_c3cgl"]
+[ext_resource type="PackedScene" uid="uid://m5c882okp1d5" path="res://src/level/level_corridors.tscn" id="4_0jqe5"]
 [ext_resource type="AudioStream" uid="uid://xqphb3nhyhwn" path="res://assets/music/Jijikoptew.mp3" id="4_23ibb"]
 [ext_resource type="AudioStream" uid="uid://detottd5d6yhg" path="res://assets/music/Jijikoptew2.mp3" id="5_61a2t"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1eu3o")
-level_scenes = Array[PackedScene]([ExtResource("2_c3cgl"), ExtResource("1_22otc")])
+level_scenes = Array[PackedScene]([ExtResource("2_c3cgl"), ExtResource("1_22otc"), ExtResource("4_0jqe5")])
 music_resources = Array[AudioStreamMP3]([ExtResource("4_23ibb"), ExtResource("5_61a2t")])
 
 [node name="World" type="Node2D" parent="."]
