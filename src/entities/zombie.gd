@@ -45,9 +45,9 @@ func unselect():
 	is_idle = false
 	Engine.time_scale = 1
 	var main = get_node("/root/Main")
-	if main == null: return
-	main.get_node("AudioStreamPlayer").pitch_scale = 1
 	$AnimatedSprite2D.self_modulate = Color(1, 1, 1)
+	if not main == null:
+		main.get_node("AudioStreamPlayer").pitch_scale = 1
 
 func can_see(target: Vector2):
 	var space_state = get_world_2d().direct_space_state
