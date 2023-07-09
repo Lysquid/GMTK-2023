@@ -57,7 +57,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_3flgl")
 }],
 "loop": false,
-"name": &"death",
+"name": &"die",
 "speed": 5.0
 }, {
 "frames": [{
@@ -82,7 +82,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_pr0xd")
 }],
 "loop": true,
-"name": &"running",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -90,5 +90,4 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_li8ne")
-animation = &"death"
-frame_progress = 0.812162
+animation = &"die"
