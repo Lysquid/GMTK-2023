@@ -20,7 +20,8 @@ func die():
 	$AnimatedSprite2D.play("die")
 	$Gun/Sprite.hide()
 	alive = false
-
+	remove_from_group('humans')
+	set_physics_process(false)
 
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "die":

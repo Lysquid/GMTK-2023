@@ -16,10 +16,9 @@ position = Vector2(208, 72)
 
 [node name="ExplosiveZombie" parent="Zombies" index="0" instance=ExtResource("3_2cev0")]
 position = Vector2(148.694, 110.136)
-ARROW_DIST = 20.0
 
 [node name="normal_zombie2" parent="Zombies" index="1" instance=ExtResource("2_6nox7")]
-position = Vector2(82, 101)
+position = Vector2(209.279, 61.7556)
 
 [node name="normal_zombie3" parent="Zombies" index="2" instance=ExtResource("2_6nox7")]
 position = Vector2(94.3744, 152.189)
