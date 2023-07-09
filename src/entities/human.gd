@@ -41,7 +41,7 @@ func can_shoot(enemy: Zombie, dir = null):
 		to = global_position + dir * position.distance_to(enemy.position)
 	
 	var space_state = get_world_2d().direct_space_state
-	var query = PhysicsRayQueryParameters2D.create(global_position, to, 3)
+	var query = PhysicsRayQueryParameters2D.create(global_position, to, 7)
 	
 	var result: Dictionary = space_state.intersect_ray(query)
 	if result.is_empty(): return false	# should not happen
