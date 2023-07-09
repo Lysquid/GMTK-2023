@@ -68,7 +68,7 @@ animations = [{
 radius = 2.0
 height = 6.0
 
-[node name="Human" type="CharacterBody2D"]
+[node name="Human" type="CharacterBody2D" groups=["humans"]]
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("1_c8ce2")
@@ -77,7 +77,7 @@ VISION_RANGE = 60
 ANGULAR_SPEED = 2.0
 ARROW_DIST = 10.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["humans"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ycaak")
 animation = &"look_down"
 autoplay = "look_down"

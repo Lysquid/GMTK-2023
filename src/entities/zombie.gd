@@ -29,12 +29,15 @@ func die():
 	unselect()
 	$Arrow.visible = false
 	$CollisionShape2D.set_deferred("disabled", true)
+	remove_from_group('zombies')
+	set_physics_process(false)
 
 
 func unselect():
 	get_parent().unselect()
 	selected = false
 	is_idle = false
+	Engine.time_scale = 1
 
 
 func _process(delta):
@@ -51,7 +54,6 @@ func _process(delta):
 			direction = dir_to_mouse
 			unselect()
 			run()
-			Engine.time_scale = 1
 	else:
 		if click and mouse_on_zombie and get_parent().can_select():
 			# select zombie
@@ -81,9 +83,9 @@ func _physics_process(delta):
 			direction = collision_dir.rotated(randf_range(-PI/2, PI/2))
 			
 			if body is Zombie or body is Human:
-					$AnimatedSprite2D.play("attack")
-					body.die()
-					is_idle = true
+				$AnimatedSprite2D.play("attack")
+				body.die()
+				is_idle = true
 			else:
 				set_idle()
 
@@ -110,7 +112,7 @@ func _on_idle_timer_timeout():
 
 
 func run():
-	$AnimatedSprite2D.flip_h = (direction.dot(Vector2.RIGHT) > 0)
+	$AnimatedSprite2D.flip_h = direction.dot(Vector2.RIGHT) > 0
 	$AnimatedSprite2D.play("run")
 
 
