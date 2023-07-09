@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c4wjbrqxnu2d" path="res://src/hud/game_over.tscn" id="7_3g5jx"]
 [ext_resource type="PackedScene" uid="uid://bbxn3vlyu8kcs" path="res://src/level/level5.tscn" id="7_rybd2"]
 [ext_resource type="PackedScene" uid="uid://crlor7admtbns" path="res://src/hud/level_complete.tscn" id="8_1xysx"]
-[ext_resource type="PackedScene" uid="uid://b4bpuhagg6e1d" path="res://src/hud/game_end.tscn" id="9_opsku"]
+[ext_resource type="PackedScene" path="res://src/hud/game_end.tscn" id="9_opsku"]
 [ext_resource type="PackedScene" uid="uid://qo5iolb3j7rf" path="res://src/hud/game_start.tscn" id="13_4grk6"]
 
 [node name="Main" type="Node"]
@@ -26,6 +26,7 @@ game_end_hud = ExtResource("9_opsku")
 z_index = -1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
 autoplay = true
 
 [node name="StartScreen" parent="." instance=ExtResource("13_4grk6")]

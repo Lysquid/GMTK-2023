@@ -1,11 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3lvcsjo3xb7y"]
+[gd_scene load_steps=15 format=3 uid="uid://d3lvcsjo3xb7y"]
 
 [ext_resource type="Script" path="res://src/entities/zombie.gd" id="1_tq7vc"]
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/icons_shadows.png" id="2_x3y4f"]
 [ext_resource type="AudioStream" uid="uid://c2jx0852khgdg" path="res://assets/music/sounds/attack.mp3" id="3_jqu0e"]
+[ext_resource type="AudioStream" uid="uid://botevwop6qgmr" path="res://assets/music/sounds/swallow.mp3" id="4_dbpsn"]
 [ext_resource type="AudioStream" uid="uid://cmresctlv3o1e" path="res://assets/music/sounds/mort_zombie.mp3" id="4_rcgk6"]
 [ext_resource type="AudioStream" uid="uid://bf16t48q8rj4q" path="res://assets/music/sounds/clic_zombie_interrogation.mp3" id="6_62u1m"]
+[ext_resource type="AudioStream" uid="uid://c6o3dpb53l6ei" path="res://assets/music/sounds/euuuhuhh.mp3" id="6_vv3o7"]
 [ext_resource type="AudioStream" uid="uid://fpkwm6jx1enn" path="res://assets/music/sounds/zombie_direction_donnee.mp3" id="7_3mo8g"]
+[ext_resource type="AudioStream" uid="uid://6eqbuuuw7hd" path="res://assets/music/sounds/gargouillis.mp3" id="7_ttib2"]
 [ext_resource type="AudioStream" uid="uid://dawjx6smvaebe" path="res://assets/music/sounds/bump.mp3" id="8_42y14"]
 [ext_resource type="AudioStream" uid="uid://b2i361t2fapyv" path="res://assets/music/sounds/rassemblement.mp3" id="9_qaha0"]
 
@@ -80,13 +83,16 @@ one_shot = true
 stream = ExtResource("3_jqu0e")
 
 [node name="Gulp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dbpsn")
 
 [node name="Die" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_rcgk6")
 
 [node name="Idle1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vv3o7")
 
 [node name="Idle2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ttib2")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_62u1m")
