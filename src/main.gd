@@ -7,23 +7,33 @@ var level_nb: int = 0
 func end_game():
 	level_nb = 0
 
-func next_level():
+func load_level():
 	if level_nb == level_scenes.size():
 		end_game()
 	var level: Level = level_scenes[level_nb].instantiate()
 	$World.add_child(level)
 	level.level_complete.connect(_on_level_complete)
-	level_nb += 1
+	level.game_over.connect(_on_level_game_over)
 
-	$AudioStreamPlayer2D.stream = music_resources.pick_random()
-	$AudioStreamPlayer2D.stream.loop = true
-	$AudioStreamPlayer2D.play()
 
 func _ready():
-	next_level()
+	play_music()
+	load_level()
 
 
 func _on_level_complete(surviving_zombies):
 	for child in $World.get_children():
 		child.queue_free()
-	next_level()
+	load_level()
+	level_nb += 1
+
+func _on_level_game_over():
+	load_level()
+	
+
+func play_music():
+	$AudioStreamPlayer2D.stream = music_resources.pick_random()
+	$AudioStreamPlayer2D.play()
+
+func _on_audio_stream_player_2d_finished():
+	play_music()
