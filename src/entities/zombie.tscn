@@ -1,7 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3lvcsjo3xb7y"]
+[gd_scene load_steps=13 format=3 uid="uid://d3lvcsjo3xb7y"]
 
 [ext_resource type="Script" path="res://src/entities/zombie.gd" id="1_tq7vc"]
 [ext_resource type="Texture2D" uid="uid://dqme4d1nsoq0l" path="res://assets/icons/icons_shadows.png" id="2_x3y4f"]
+[ext_resource type="AudioStream" uid="uid://c2jx0852khgdg" path="res://assets/music/sounds/attack.mp3" id="3_jqu0e"]
+[ext_resource type="AudioStream" uid="uid://cmresctlv3o1e" path="res://assets/music/sounds/mort_zombie.mp3" id="4_rcgk6"]
+[ext_resource type="AudioStream" uid="uid://c6o3dpb53l6ei" path="res://assets/music/sounds/euuuhuhh.mp3" id="5_oc68s"]
+[ext_resource type="AudioStream" uid="uid://bf16t48q8rj4q" path="res://assets/music/sounds/clic_zombie_interrogation.mp3" id="6_62u1m"]
+[ext_resource type="AudioStream" uid="uid://fpkwm6jx1enn" path="res://assets/music/sounds/zombie_direction_donnee.mp3" id="7_3mo8g"]
+[ext_resource type="AudioStream" uid="uid://dawjx6smvaebe" path="res://assets/music/sounds/bump.mp3" id="8_42y14"]
+[ext_resource type="AudioStream" uid="uid://b2i361t2fapyv" path="res://assets/music/sounds/rassemblement.mp3" id="9_qaha0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5pjab"]
 radius = 2.0
@@ -71,16 +78,26 @@ wait_time = 3.0
 one_shot = true
 
 [node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jqu0e")
 
 [node name="Die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rcgk6")
 
 [node name="Idle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oc68s")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_62u1m")
 
 [node name="Rush" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_3mo8g")
 
 [node name="Wall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_42y14")
+
+[node name="Gather" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_qaha0")
+volume_db = -15.0
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="SelectArea" to="." method="_on_select_area_mouse_entered"]

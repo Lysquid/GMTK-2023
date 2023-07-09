@@ -86,7 +86,7 @@ func _process(delta):
 	
 	if right_click and vec_to_mouse.length() < HEAR_RANGE and can_see(mouse_position):
 		direction = dir_to_mouse
-		$Rush.play()
+		$Gather.play()
 		run()
 
 
