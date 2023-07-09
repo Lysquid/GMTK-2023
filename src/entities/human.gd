@@ -20,6 +20,7 @@ func _ready():
 
 func die():
 	$AnimatedSprite2D.play("die")
+	$Die.play()
 	$Gun/Sprite.hide()
 	alive = false
 	remove_from_group('humans')
