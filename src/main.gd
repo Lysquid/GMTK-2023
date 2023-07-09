@@ -23,7 +23,6 @@ func load_level():
 
 func _ready():
 	play_music()
-	load_level()
 
 func _process(delta):
 	if Input.is_action_pressed("restart"):
@@ -69,5 +68,8 @@ func play_music():
 	$AudioStreamPlayer.play()
 
 func _on_audio_stream_player_2d_finished():
-	
 	play_music()
+
+func _on_start_screen_start_game():
+	$StartScreen.queue_free()
+	load_level()

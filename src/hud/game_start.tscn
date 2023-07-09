@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://qo5iolb3j7rf"]
+
+[ext_resource type="PackedScene" uid="uid://c8i62kv1n7aao" path="res://src/hud/hud.tscn" id="1_ioqm3"]
+[ext_resource type="Script" path="res://src/hud/game_start.gd" id="2_37sid"]
+
+[node name="HUD" instance=ExtResource("1_ioqm3")]
+script = ExtResource("2_37sid")
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="Title" parent="." index="1"]
+text = "Zombies are dumb"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Click anywhere to begin"
+
+[node name="Button" parent="." index="3"]
+visible = false
+text = "GMTK 2023"
