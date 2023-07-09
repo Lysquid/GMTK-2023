@@ -14,6 +14,8 @@ var alive: bool = true
 
 func _ready():
 	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
+	$Gun.rotation = direction.angle()
+	$Gun/Sprite.flip_v = direction.dot(Vector2.LEFT) > 0
 
 
 func die():
