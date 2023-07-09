@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4bpuhagg6e1d"]
+
+[ext_resource type="PackedScene" uid="uid://c8i62kv1n7aao" path="res://src/hud/hud.tscn" id="1_yynsx"]
+[ext_resource type="Theme" uid="uid://chso812y0e5il" path="res://res/small_text.tres" id="2_k30ca"]
+
+[node name="HUD" instance=ExtResource("1_yynsx")]
+
+[node name="Title" parent="." index="1"]
+text = "THE END"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Total zombies rescued:"
+
+[node name="Button" parent="." index="3"]
+text = "SAVE MORE OF THEM"
+
+[node name="Label" type="Label" parent="." index="4"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 5.0
+offset_right = 286.0
+offset_bottom = 28.0
+rotation = 0.520975
+theme = ExtResource("2_k30ca")
+text = "Thanks for playing!"
