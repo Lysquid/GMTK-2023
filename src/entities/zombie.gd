@@ -2,7 +2,8 @@ extends CharacterBody2D
 class_name Zombie
 
 const SPEED: float = 15
-@export var ARROW_DIST: float
+const SLOW_TIME_SCALE := 0.33
+
 
 var mouse_on_zombie: bool = false
 var selected: bool = false
@@ -50,11 +51,14 @@ func _process(delta):
 			direction = dir_to_mouse
 			unselect()
 			run()
+			Engine.time_scale = 1
 	else:
 		if click and mouse_on_zombie and get_parent().can_select():
+			# select zombie
 			$AnimatedSprite2D.play("idle")
 			selected = true
 			get_parent().select()
+			Engine.time_scale = SLOW_TIME_SCALE
 	
 	# showing selection
 	if selected:
