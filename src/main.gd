@@ -1,6 +1,7 @@
 extends Node
 
 @export var level_scenes: Array[PackedScene]
+@export var music_resources: Array[AudioStreamMP3]
 var level_nb: int = 0
 
 func end_game():
@@ -13,6 +14,10 @@ func next_level():
 	$World.add_child(level)
 	level.level_complete.connect(_on_level_complete)
 	level_nb += 1
+
+	$AudioStreamPlayer2D.stream = music_resources.pick_random()
+	$AudioStreamPlayer2D.stream.loop = true
+	$AudioStreamPlayer2D.play()
 
 func _ready():
 	next_level()
