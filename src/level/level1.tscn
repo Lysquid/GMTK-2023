@@ -22,3 +22,15 @@ position = Vector2(209.279, 61.7556)
 
 [node name="normal_zombie3" parent="Zombies" index="2" instance=ExtResource("2_6nox7")]
 position = Vector2(94.3744, 152.189)
+
+[node name="normal_zombie" parent="Zombies" index="3" instance=ExtResource("2_6nox7")]
+position = Vector2(98.6841, 94.4587)
+
+[node name="normal_zombie4" parent="Zombies" index="4" instance=ExtResource("2_6nox7")]
+position = Vector2(115.036, 61.4214)
+
+[node name="normal_zombie5" parent="Zombies" index="5" instance=ExtResource("2_6nox7")]
+position = Vector2(138.729, 77.1058)
+
+[node name="normal_zombie6" parent="Zombies" index="6" instance=ExtResource("2_6nox7")]
+position = Vector2(149.742, 55.4146)

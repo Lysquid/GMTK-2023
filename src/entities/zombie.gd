@@ -3,6 +3,7 @@ class_name Zombie
 
 const SPEED: float = 15
 const SLOW_TIME_SCALE := 0.33
+const HEAR_RANGE := 80
 
 
 var mouse_on_zombie: bool = false
@@ -16,11 +17,6 @@ var is_idle: bool = false
 func _ready():
 	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
 	run()
-
-
-func get_dir_to_mouse():
-	var mouse_pos = get_viewport().get_mouse_position()
-	return (mouse_pos - position).normalized()
 
 
 func die():
@@ -45,17 +41,19 @@ func _process(delta):
 	if !alive :
 		return
 	
-	var click: bool = Input.is_action_just_pressed("select")
-	var dir_to_mouse: Vector2 = get_dir_to_mouse()
+	var left_click: bool = Input.is_action_just_pressed("left_click")
+	var right_click: bool = Input.is_action_just_pressed("right_click")
+	var vec_to_mouse := get_viewport().get_mouse_position() - position
+	var dir_to_mouse := vec_to_mouse.normalized()
 	
 	# updating selected variable
 	if selected:
-		if click:
+		if left_click:
 			direction = dir_to_mouse
 			unselect()
 			run()
 	else:
-		if click and mouse_on_zombie and get_parent().can_select():
+		if left_click and mouse_on_zombie and get_parent().can_select():
 			# select zombie
 			$AnimatedSprite2D.play("idle")
 			selected = true
@@ -67,6 +65,10 @@ func _process(delta):
 		$Arrow.rotation = dir_to_mouse.angle()
 	
 	$Arrow.visible = selected
+	
+	if right_click and vec_to_mouse.length() < HEAR_RANGE:
+		direction = dir_to_mouse
+		run()
 
 
 func _physics_process(delta):
