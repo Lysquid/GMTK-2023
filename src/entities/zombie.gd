@@ -34,6 +34,8 @@ func unselect():
 	selected = false
 	is_idle = false
 	Engine.time_scale = 1
+	var main = get_node("/root/Main")
+	main.$AudioStreamPlayer2D.pitch_scale = 1
 
 
 func _process(delta):
@@ -59,6 +61,8 @@ func _process(delta):
 			selected = true
 			get_parent().select()
 			Engine.time_scale = SLOW_TIME_SCALE
+			var main = get_node("/root/Main")
+			main.$AudioStreamPlayer2D.pitch_scale = 0.5
 	
 	# showing selection
 	if selected:
