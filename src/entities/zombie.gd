@@ -13,10 +13,17 @@ var direction: Vector2
 var alive: bool = true
 var is_idle: bool = false
 
+var idle_sounds = [$Idle1, $Idle2]
+
 
 func _ready():
 	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
+	_on_idle_finished()
 	run()
+
+
+func play_idle():
+	idle_sounds.pick_random().play()
 
 
 func die():
@@ -86,7 +93,7 @@ func _process(delta):
 	
 	if right_click and vec_to_mouse.length() < HEAR_RANGE and can_see(mouse_position):
 		direction = dir_to_mouse
-		$Rush.play()
+		$Gather.play()
 		run()
 
 
@@ -143,4 +150,14 @@ func run():
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "attack":
 		is_idle = false
+		$Gulp.play()
 		set_idle()
+
+
+func _on_sound_timer_timeout():
+	play_idle()
+
+
+func _on_idle_finished():
+	$SoundTimer.wait_time = randf_range(3, 7)
+	$SoundTimer.start()
