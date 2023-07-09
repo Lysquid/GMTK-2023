@@ -3,13 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://c8i62kv1n7aao" path="res://src/hud/hud.tscn" id="1_yynsx"]
 [ext_resource type="Theme" uid="uid://chso812y0e5il" path="res://res/small_text.tres" id="2_k30ca"]
 
-[node name="HUD" instance=ExtResource("1_yynsx")]
+[node name="GameEndHUD" instance=ExtResource("1_yynsx")]
+
+[node name="ColorRect" parent="." index="0"]
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [node name="Title" parent="." index="1"]
 text = "THE END"
 
 [node name="Subtitle" parent="." index="2"]
-text = "Total zombies rescued:"
+text = "Total zombies rescued: "
 
 [node name="Button" parent="." index="3"]
 text = "SAVE MORE OF THEM"

@@ -1,25 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckquq3ei6vpjd"]
+[gd_scene load_steps=13 format=3 uid="uid://ckquq3ei6vpjd"]
 
 [ext_resource type="Script" path="res://src/main.gd" id="1_1eu3o"]
-[ext_resource type="PackedScene" uid="uid://br5mxh6t1lm8v" path="res://src/level/level2.tscn" id="1_22otc"]
 [ext_resource type="PackedScene" uid="uid://ppkxvax6r7ji" path="res://src/level/level_tuto.tscn" id="2_c3cgl"]
-[ext_resource type="PackedScene" uid="uid://m5c882okp1d5" path="res://src/level/level_corridors.tscn" id="4_0jqe5"]
+[ext_resource type="PackedScene" uid="uid://dgs0s1oyotwfu" path="res://src/level/level1.tscn" id="3_4knsm"]
 [ext_resource type="AudioStream" uid="uid://xqphb3nhyhwn" path="res://assets/music/Jijikoptew.mp3" id="4_23ibb"]
+[ext_resource type="PackedScene" uid="uid://br5mxh6t1lm8v" path="res://src/level/level2.tscn" id="4_xnvfv"]
+[ext_resource type="PackedScene" uid="uid://m5c882okp1d5" path="res://src/level/level3.tscn" id="5_4wjoq"]
 [ext_resource type="AudioStream" uid="uid://detottd5d6yhg" path="res://assets/music/Jijikoptew2.mp3" id="5_61a2t"]
+[ext_resource type="PackedScene" uid="uid://cye8d0rl2hifu" path="res://src/level/level4.tscn" id="6_2w4it"]
 [ext_resource type="PackedScene" uid="uid://c4wjbrqxnu2d" path="res://src/hud/game_over.tscn" id="7_3g5jx"]
+[ext_resource type="PackedScene" uid="uid://bbxn3vlyu8kcs" path="res://src/level/level5.tscn" id="7_rybd2"]
 [ext_resource type="PackedScene" uid="uid://crlor7admtbns" path="res://src/hud/level_complete.tscn" id="8_1xysx"]
+[ext_resource type="PackedScene" uid="uid://b4bpuhagg6e1d" path="res://src/hud/game_end.tscn" id="9_opsku"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_1eu3o")
-level_scenes = Array[PackedScene]([ExtResource("2_c3cgl"), ExtResource("1_22otc"), ExtResource("4_0jqe5")])
+level_scenes = Array[PackedScene]([ExtResource("2_c3cgl"), ExtResource("3_4knsm"), ExtResource("4_xnvfv"), ExtResource("5_4wjoq"), ExtResource("6_2w4it"), ExtResource("7_rybd2")])
 music_resources = Array[AudioStreamMP3]([ExtResource("4_23ibb"), ExtResource("5_61a2t")])
 game_over_hud = ExtResource("7_3g5jx")
 level_complete_hud = ExtResource("8_1xysx")
+game_end_hud = ExtResource("9_opsku")
 
 [node name="World" type="Node2D" parent="."]
 z_index = -1
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
-[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_2d_finished"]

@@ -14,10 +14,13 @@ var alive: bool = true
 
 func _ready():
 	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
+	$Gun.rotation = direction.angle()
+	$Gun/Sprite.flip_v = direction.dot(Vector2.LEFT) > 0
 
 
 func die():
 	$AnimatedSprite2D.play("die")
+	$Die.play()
 	$Gun/Sprite.hide()
 	alive = false
 	remove_from_group('humans')
@@ -63,6 +66,7 @@ func get_closest_zombie_in_range() -> Zombie:
 
 
 func shoot(zombie: Zombie):
+	$Fire.play()
 	var bullet := bullet_scene.instantiate()
 	get_parent().add_child(bullet)
 	bullet.global_position = global_position

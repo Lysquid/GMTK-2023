@@ -21,6 +21,7 @@ func _ready():
 
 func die():
 	$AnimatedSprite2D.play("die")
+	$Die.play()
 	self.alive = false
 	unselect()
 	$Arrow.visible = false
@@ -36,7 +37,7 @@ func unselect():
 	Engine.time_scale = 1
 	var main = get_node("/root/Main")
 	if main == null: return
-	main.get_node("AudioStreamPlayer2D").pitch_scale = 1
+	main.get_node("AudioStreamPlayer").pitch_scale = 1
 
 func can_see(target: Vector2):
 	var space_state = get_world_2d().direct_space_state
@@ -61,6 +62,7 @@ func _process(delta):
 	# updating selected variable
 	if selected:
 		if left_click:
+			$Rush.play()
 			direction = dir_to_mouse
 			unselect()
 			run()
@@ -68,12 +70,13 @@ func _process(delta):
 		if left_click and mouse_on_zombie and get_parent().can_select():
 			# select zombie
 			$AnimatedSprite2D.play("idle")
+			$Click.play()
 			selected = true
 			get_parent().select()
 			Engine.time_scale = SLOW_TIME_SCALE
 			var main = get_node("/root/Main")
 			if main != null:
-				main.get_node("AudioStreamPlayer2D").pitch_scale = 0.5
+				main.get_node("AudioStreamPlayer").pitch_scale = 0.5
 	
 	# showing selection
 	if selected:
@@ -83,6 +86,7 @@ func _process(delta):
 	
 	if right_click and vec_to_mouse.length() < HEAR_RANGE and can_see(mouse_position):
 		direction = dir_to_mouse
+		$Rush.play()
 		run()
 
 
@@ -101,9 +105,11 @@ func _physics_process(delta):
 			
 			if body is Zombie or body is Human:
 				$AnimatedSprite2D.play("attack")
+				$Attack.play()
 				body.die()
 				is_idle = true
 			else:
+				$Wall.play()
 				set_idle()
 
 
