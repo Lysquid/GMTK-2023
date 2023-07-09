@@ -36,7 +36,7 @@ func unselect():
 	Engine.time_scale = 1
 	var main = get_node("/root/Main")
 	if main == null: return
-	main.get_node("AudioStreamPlayer2D").pitch_scale = 1
+	main.get_node("AudioStreamPlayer").pitch_scale = 1
 
 func can_see(target: Vector2):
 	var space_state = get_world_2d().direct_space_state
@@ -73,7 +73,7 @@ func _process(delta):
 			Engine.time_scale = SLOW_TIME_SCALE
 			var main = get_node("/root/Main")
 			if main != null:
-				main.get_node("AudioStreamPlayer2D").pitch_scale = 0.5
+				main.get_node("AudioStreamPlayer").pitch_scale = 0.5
 	
 	# showing selection
 	if selected:

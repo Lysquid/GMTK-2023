@@ -65,8 +65,8 @@ func _on_level_game_over():
 	load_level()
 
 func play_music():
-	$AudioStreamPlayer2D.stream = music_resources.pick_random()
-	$AudioStreamPlayer2D.play()
+	$AudioStreamPlayer.stream = music_resources.pick_random()
+	$AudioStreamPlayer.play()
 
 func _on_audio_stream_player_2d_finished():
 	
