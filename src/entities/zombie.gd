@@ -159,5 +159,6 @@ func _on_sound_timer_timeout():
 
 
 func _on_idle_finished():
-	$SoundTimer.wait_time = randf_range(3, 7)
-	$SoundTimer.start()
+	if alive:
+		$SoundTimer.wait_time = randf_range(5, 15)
+		$SoundTimer.start()
