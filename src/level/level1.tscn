@@ -15,7 +15,7 @@ layer_1/tile_data = PackedInt32Array(655363, 0, 5, 655364, 0, 5, 655365, 196608,
 position = Vector2(212, 45)
 
 [node name="Human2" parent="Humans" index="1" instance=ExtResource("3_immhs")]
-position = Vector2(261, 155)
+position = Vector2(268.106, 147.372)
 
 [node name="normal_zombie6" parent="Zombies" index="0" instance=ExtResource("2_6nox7")]
 position = Vector2(150.896, 47.5595)
