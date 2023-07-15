@@ -26,7 +26,7 @@ game_end_hud = ExtResource("9_opsku")
 z_index = -1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -4.0
+volume_db = -10.0
 autoplay = true
 
 [node name="StartScreen" parent="." instance=ExtResource("13_4grk6")]
