@@ -17,6 +17,7 @@ var idle_sounds: Array
 
 
 func _ready():
+	$Arrow.visible = false
 	direction = Vector2.UP.rotated(randf() * 2 * PI).normalized()
 	_on_idle_finished()
 	run()
@@ -37,6 +38,7 @@ func die():
 	$CollisionShape2D.set_deferred("disabled", true)
 	remove_from_group('zombies')
 	set_physics_process(false)
+	$SoundTimer.stop()
 
 
 func unselect():
