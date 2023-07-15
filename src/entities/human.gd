@@ -23,12 +23,12 @@ func die():
 	$Die.play()
 	$Gun/Sprite.hide()
 	alive = false
-	remove_from_group('humans')
 	set_physics_process(false)
 
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "die":
 		$CollisionShape2D.set_deferred("disabled", true)
+		remove_from_group('humans')
 
 
 func can_shoot(enemy: Zombie, dir = null):
