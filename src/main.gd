@@ -6,7 +6,7 @@ extends Node
 @export var level_complete_hud: PackedScene
 @export var game_end_hud: PackedScene
 
-var level_nb: int = 0
+var level_nb := 0
 var total_rescued_zombies := 0
 
 func end_game():
@@ -29,14 +29,17 @@ func _process(delta):
 		load_level()
 
 func end_screen():
+	for child in $World.get_children():
+		child.queue_free()
 	var hud := game_end_hud.instantiate()
 	var subtitle: Label = hud.get_node("Subtitle")
 	var button: Button = hud.get_node("Button")
 	subtitle.text += str(total_rescued_zombies)
 	add_child(hud)
-	level_nb = 0
 	await button.pressed
 	hud.queue_free()
+	level_nb = 0
+	total_rescued_zombies = 0
 
 func _on_level_complete(surviving_zombies: int):
 	total_rescued_zombies += surviving_zombies
@@ -50,8 +53,8 @@ func _on_level_complete(surviving_zombies: int):
 	level_nb += 1
 	hud.queue_free()
 	
-	if level_nb == level_scenes.size():
-		end_screen()
+	if level_nb == 1: # level_scenes.size():
+		await end_screen()
 	
 	load_level()
 
