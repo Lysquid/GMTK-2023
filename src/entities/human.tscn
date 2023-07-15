@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ibv3ohtyrc7g"]
+[gd_scene load_steps=15 format=3 uid="uid://ibv3ohtyrc7g"]
 
 [ext_resource type="Script" path="res://src/entities/human.gd" id="1_c8ce2"]
 [ext_resource type="Texture2D" uid="uid://dvbep6wmsy153" path="res://assets/characters/png/human_death.png" id="2_3o38f"]
@@ -7,10 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://dwlr2b7lefhoa" path="res://assets/guns.png" id="5_5xxdy"]
 [ext_resource type="AudioStream" uid="uid://wbts8dbmrahi" path="res://assets/music/sounds/pistol.mp3" id="6_0fvks"]
 [ext_resource type="AudioStream" uid="uid://d3opsg113s87t" path="res://assets/music/sounds/mort_jijiko.mp3" id="7_1w30e"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvugm"]
-atlas = ExtResource("2_3o38f")
-region = Rect2(0, 0, 10, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rumid"]
 atlas = ExtResource("2_3o38f")
@@ -35,9 +31,6 @@ region = Rect2(70, 0, 10, 10)
 [sub_resource type="SpriteFrames" id="SpriteFrames_ycaak"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lvugm")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rumid")
 }, {
@@ -81,7 +74,7 @@ ARROW_DIST = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ycaak")
-animation = &"look_down"
+animation = &"die"
 autoplay = "look_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -102,7 +95,7 @@ texture = ExtResource("5_5xxdy")
 
 [node name="Fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0fvks")
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="Die" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_1w30e")
