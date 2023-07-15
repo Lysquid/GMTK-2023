@@ -65,7 +65,7 @@ func get_closest_zombie_in_range() -> Zombie:
 	return null
 
 
-func shoot(zombie: Zombie):
+func shoot():
 	$Fire.play()
 	var bullet := bullet_scene.instantiate()
 	get_parent().add_child(bullet)
@@ -93,7 +93,7 @@ func _physics_process(delta):
 	var target = get_closest_zombie_in_range()
 	if target != null:
 		if can_shoot(target, direction) and $ShootingCooldown.is_stopped():
-			shoot(target)
+			shoot()
 		
 		else:
 			aim(target, delta)

@@ -60,7 +60,7 @@ func can_see(target: Vector2):
 		return position.distance_to(collision_position) > position.distance_to(target)
 	return true
 
-func _process(delta):
+func _process(_delta):
 	
 	if !alive :
 		return

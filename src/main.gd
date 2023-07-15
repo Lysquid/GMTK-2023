@@ -24,7 +24,7 @@ func load_level():
 func _ready():
 	play_music()
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_pressed("restart"):
 		load_level()
 
@@ -53,7 +53,7 @@ func _on_level_complete(surviving_zombies: int):
 	level_nb += 1
 	hud.queue_free()
 	
-	if level_nb == 1: # level_scenes.size():
+	if level_nb == level_scenes.size():
 		await end_screen()
 	
 	load_level()

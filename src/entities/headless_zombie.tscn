@@ -43,6 +43,11 @@ region = Rect2(20, 0, 10, 10)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_li8ne"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ibu8x")
@@ -90,4 +95,4 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_li8ne")
-animation = &"die"
+animation = &"attack"

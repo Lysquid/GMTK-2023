@@ -7,7 +7,7 @@ signal game_over
 
 var end = false
 
-func _process(delta):
+func _process(_delta):
 	
 	if not end:
 	
