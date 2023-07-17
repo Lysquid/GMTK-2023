@@ -19,11 +19,12 @@ func _ready():
 
 
 func die():
-	$AnimatedSprite2D.play("die")
-	$Die.play()
-	$Gun/Sprite.hide()
-	alive = false
-	set_physics_process(false)
+	if alive:
+		$AnimatedSprite2D.play("die")
+		$Die.play()
+		$Gun/Sprite.hide()
+		alive = false
+		set_physics_process(false)
 
 func _on_animated_sprite_2d_animation_finished():
 	if $AnimatedSprite2D.animation == "die":

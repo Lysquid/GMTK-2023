@@ -104,7 +104,7 @@ volume_db = -15.0
 
 [node name="Rush" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_3mo8g")
-volume_db = -20.0
+volume_db = -15.0
 
 [node name="Wall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_42y14")
